@@ -1,0 +1,95 @@
+/**
+ * Electric Dusk — Royal blue / violet-purple / amber-orange
+ *
+ * Color role mapping:
+ *   Primary (surfaces/neutrals) → white/light grays  →  zinc/slate scale
+ *   Secondary (interactive)     → royal blue + violet →  indigo→violet scale
+ *   Accent (highlights/CTAs)    → amber-orange        →  orange scale
+ *
+ * Uses Aura's built-in primitive palettes (blue, indigo, violet, orange, zinc)
+ * so all token references are valid and resolvable.
+ */
+export const electricDuskTheme = {
+  semantic: {
+    // Maps PrimeNG's "primary" action scale to blue→indigo→violet
+    primary: {
+      50:  '{blue.50}',
+      100: '{blue.100}',
+      200: '{indigo.200}',
+      300: '{indigo.300}',
+      400: '{indigo.400}',
+      500: '{indigo.500}',
+      600: '{violet.600}',
+      700: '{violet.700}',
+      800: '{violet.800}',
+      900: '{violet.900}',
+      950: '{violet.950}',
+    },
+    colorScheme: {
+      light: {
+        // Interactive primary: royal blue → shifts to violet on hover
+        primary: {
+          color:         '#1D6FE8',
+          contrastColor: '#FFFFFF',
+          hoverColor:    '#7C3AED',
+          activeColor:   '#6B3BE6',
+        },
+        // Accent: amber-orange for selected/highlighted states
+        highlight: {
+          background:      '#FFEDD5',
+          focusBackground: '#FED7AA',
+          color:           '#9A3412',
+          focusColor:      '#7C2D12',
+        },
+        // Surfaces: white → light grays (direct hex, no broken self-references)
+        surface: {
+          0:   '#FFFFFF',
+          50:  '#F8F9FC',
+          100: '#F1F5F9',
+          200: '#E2E8F0',
+          300: '#CBD5E1',
+          400: '#94A3B8',
+          500: '#64748B',
+          600: '#475569',
+          700: '#334155',
+          800: '#1F2937',
+          900: '#0B1220',
+          950: '#05090F',
+        },
+      },
+      dark: {
+        // Interactive primary: lighter indigo for dark backgrounds
+        primary: {
+          color:         '#818CF8',
+          contrastColor: '#0A1628',
+          hoverColor:    '#A5B4FC',
+          activeColor:   '#C7D2FE',
+        },
+        // Accent: orange with transparency for dark mode
+        highlight: {
+          background:      'color-mix(in srgb, #F97316, transparent 84%)',
+          focusBackground: 'color-mix(in srgb, #F97316, transparent 76%)',
+          color:           'rgba(255,255,255,0.87)',
+          focusColor:      'rgba(255,255,255,0.87)',
+        },
+        // Surfaces: deep navy → near-black
+        surface: {
+          0:   '#FFFFFF',
+          50:  '#EEF2FF',
+          100: '#1A2235',
+          200: '#16202E',
+          300: '#121A28',
+          400: '#0E1520',
+          500: '#0B1220',
+          600: '#080E18',
+          700: '#060B12',
+          800: '#04080C',
+          900: '#020406',
+          950: '#000000',
+        },
+      },
+    },
+  },
+};
+
+export default electricDuskTheme;

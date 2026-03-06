@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JVR Enterprises LLC — Enterprise Software Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* =============================================
+     COLOR SYSTEM — Split Complementary
+     60% White/Light  → backgrounds, surfaces
+     30% Blue+Purple  → structure, nav, sections
+     10% Orange       → CTAs, accents, highlights
+  ============================================= */
+  :root {
+    --white:      #FFFFFF;
+    --light:      #F8F9FC;
+    --light-2:    #EEF2FF;
+    --blue:       #1D6FE8;
+    --blue-dark:  #0F4BAA;
+    --blue-deep:  #0A1628;
+    --purple:     #7C3AED;
+    --orange:     #F97316;
+    --orange-deep:#C2570C;
+    --text:       #0D1E3D;
+    --text-mid:   #2D3E5C;
+    --text-light: #5C6E8A;
+    --border:     #DDE3F0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+  /* ─── HEADER ─────────────────────────────── */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 12px rgba(29,111,232,0.07);
+  }
+  .header-inner {
+    max-width: 1160px; margin: 0 auto;
+    padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo-mark { width: 40px; height: 40px; flex-shrink: 0; }
+  .logo-text { display: flex; flex-direction: column; line-height: 1; }
+  .logo-name { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--text); letter-spacing: 0.04em; }
+  .logo-tagline { font-size: 9px; font-weight: 500; color: var(--text-light); letter-spacing: 0.18em; text-transform: uppercase; margin-top: 2px; }
+
+  nav { display: flex; align-items: center; gap: 28px; }
+  nav a { font-size: 14px; font-weight: 500; color: var(--text-mid); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; position: relative; }
+  nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--blue); border-radius: 2px; transition: width 0.25s; }
+  nav a:hover { color: var(--blue); }
+  nav a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--orange); color: var(--white) !important;
+    padding: 9px 20px; border-radius: 6px;
+    font-weight: 600 !important; font-size: 13px !important;
+    text-decoration: none; letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.15s !important;
+    box-shadow: 0 3px 10px rgba(249,115,22,0.3);
+    white-space: nowrap;
+  }
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: var(--orange-deep) !important; transform: translateY(-1px); }
+
+  /* Hamburger */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+  .mobile-nav {
+    display: none; flex-direction: column; gap: 0;
+    background: var(--white); border-top: 1px solid var(--border);
+    padding: 8px 0 16px;
+  }
+  .mobile-nav a { display: block; padding: 10px 24px; font-size: 15px; font-weight: 500; color: var(--text-mid); text-decoration: none; }
+  .mobile-nav a:hover { color: var(--blue); background: var(--light); }
+  .mobile-nav .nav-cta { margin: 8px 24px 0; display: block; text-align: center; border-radius: 6px; }
+  .mobile-nav .nav-cta::after { display: none; }
+
+  /* ─── HERO ────────────────────────────────── */
+  .hero {
+    background: var(--white);
+    padding: 60px 24px 52px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1160px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 60px;
+    position: relative; z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--light-2); border: 1px solid rgba(29,111,232,0.2);
+    color: var(--blue); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 20px; margin-bottom: 18px;
+  }
+  .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); display: inline-block; }
+  .hero h1 { font-size: 46px; font-weight: 800; line-height: 1.12; color: var(--text); margin-bottom: 16px; letter-spacing: -0.01em; }
+  .hero h1 em { font-style: normal; background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero p { font-size: 16px; color: var(--text-light); line-height: 1.75; margin-bottom: 28px; max-width: 460px; }
+  .hero-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+  .btn-primary { background: var(--blue); color: var(--white); padding: 12px 26px; border-radius: 7px; font-size: 14px; font-weight: 600; text-decoration: none; letter-spacing: 0.02em; transition: background 0.2s, transform 0.15s; box-shadow: 0 4px 14px rgba(29,111,232,0.3); white-space: nowrap; }
+  .btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); }
+  .btn-secondary { color: var(--text-mid); font-size: 14px; font-weight: 500; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s; white-space: nowrap; }
+  .btn-secondary:hover { color: var(--blue); }
+  .btn-secondary .arrow { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 13px; transition: border-color 0.2s, background 0.2s; }
+  .btn-secondary:hover .arrow { border-color: var(--blue); background: var(--light-2); }
+
+  .hero-visual {
+    background: var(--light); border-radius: 16px; padding: 28px;
+    border: 1px solid var(--border);
+    box-shadow: 0 6px 32px rgba(29,111,232,0.08); position: relative;
+  }
+  .hero-visual::before {
+    content: ''; position: absolute; top: -2px; left: 32px; right: 32px; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--purple), var(--orange));
+    border-radius: 0 0 3px 3px;
+  }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .stat-card { background: var(--white); border-radius: 10px; padding: 18px 16px; border: 1px solid var(--border); transition: box-shadow 0.2s; }
+  .stat-card:hover { box-shadow: 0 4px 18px rgba(29,111,232,0.1); }
+  .stat-card.wide { grid-column: 1 / -1; display: flex; align-items: center; gap: 14px; }
+  .stat-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; margin-bottom: 10px; flex-shrink: 0; }
+  .stat-icon.blue { background: rgba(29,111,232,0.1); }
+  .stat-icon.purple { background: rgba(124,58,237,0.1); }
+  .stat-icon.orange { background: rgba(249,115,22,0.1); }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--text); line-height: 1; }
+  .stat-label { font-size: 11px; color: var(--text-light); margin-top: 3px; font-weight: 500; }
+  .stat-badge { background: rgba(249,115,22,0.1); color: var(--orange-deep); font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 20px; white-space: nowrap; }
+
+  /* ─── CLIENTS ─────────────────────────────── */
+  .clients { background: var(--light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 24px; }
+  .clients-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; gap: 36px; flex-wrap: wrap; }
+  .clients-label { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-light); white-space: nowrap; }
+  .clients-logos { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+  .client-logo { font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 700; color: var(--text-light); letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; cursor: default; }
+  .client-logo:hover { color: var(--text); }
+
+  /* ─── SHARED SECTION STYLES ──────────────── */
+  .section-inner { max-width: 1160px; margin: 0 auto; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+  .section-title { font-size: 34px; font-weight: 700; line-height: 1.2; color: var(--text); margin-bottom: 12px; }
+  .section-sub { font-size: 15px; color: var(--text-light); max-width: 520px; line-height: 1.75; margin-bottom: 40px; }
+
+  /* ─── SERVICES ────────────────────────────── */
+  .services { padding: 64px 24px; background: var(--white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .service-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 26px 22px; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; position: relative; overflow: hidden; }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--purple)); opacity: 0; transition: opacity 0.2s; }
+  .service-card:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(29,111,232,0.1); border-color: rgba(29,111,232,0.2); }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon { width: 46px; height: 46px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 16px; }
+  .svc-blue   { background: rgba(29,111,232,0.08); }
+  .svc-purple { background: rgba(124,58,237,0.08); }
+  .svc-orange { background: rgba(249,115,22,0.08); }
+  .svc-blue2  { background: rgba(29,111,232,0.05); }
+  .svc-purple2{ background: rgba(124,58,237,0.05); }
+  .svc-orange2{ background: rgba(249,115,22,0.05); }
+  .service-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+  .service-card p { font-size: 13px; color: var(--text-light); line-height: 1.7; }
+  .service-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 14px; font-size: 12px; font-weight: 600; color: var(--blue); text-decoration: none; transition: gap 0.2s; }
+  .service-link:hover { gap: 9px; }
+  /* service-body always visible above small mobile */
+  @media (min-width: 481px) {
+    .service-body { display: block !important; }
+    .service-card h3 { cursor: default; }
+    .service-card h3::after { display: none !important; }
+  }
+
+  /* ─── FEATURES ────────────────────────────── */
+  .features { background: var(--blue-deep); padding: 64px 24px; position: relative; overflow: hidden; }
+  .features::before { content: ''; position: absolute; top: -180px; right: -180px; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(124,58,237,0.14) 0%, transparent 65%); pointer-events: none; }
+  .features .section-title { color: var(--white); }
+  .features .section-sub { color: rgba(255,255,255,0.5); }
+  .features .section-label { color: var(--orange); }
+  .features-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .feature-list { display: flex; flex-direction: column; gap: 22px; }
+  .feature-item { display: flex; gap: 14px; align-items: flex-start; }
+  .feature-dot { width: 38px; height: 38px; border-radius: 9px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 17px; }
+  .feature-dot.b { background: rgba(29,111,232,0.2); }
+  .feature-dot.p { background: rgba(124,58,237,0.2); }
+  .feature-dot.o { background: rgba(249,115,22,0.2); }
+  .feature-item h4 { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 4px; font-family: 'DM Sans', sans-serif; }
+  .feature-item p { font-size: 13px; color: rgba(255,255,255,0.48); line-height: 1.65; }
+  .features-panel { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 28px; }
+  .panel-header { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .panel-dot { width: 9px; height: 9px; border-radius: 50%; }
+  .panel-title { font-size: 12px; color: rgba(255,255,255,0.35); font-family: monospace; letter-spacing: 0.05em; }
+  .metric-row { display: flex; align-items: center; justify-content: space-between; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .metric-row:last-of-type { border-bottom: none; }
+  .metric-label { font-size: 12px; color: rgba(255,255,255,0.45); min-width: 130px; }
+  .metric-bar-wrap { flex: 1; margin: 0 14px; height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; }
+  .metric-bar { height: 100%; border-radius: 2px; }
+  .metric-val { font-size: 12px; font-weight: 600; color: var(--white); font-family: monospace; }
+  .roi-box { margin-top: 22px; padding: 16px; background: rgba(249,115,22,0.08); border-radius: 9px; border: 1px solid rgba(249,115,22,0.15); }
+
+  /* ─── PROCESS ─────────────────────────────── */
+  .process { padding: 64px 24px; background: var(--light); }
+  .process-header { text-align: center; margin-bottom: 48px; }
+  .process-header .section-sub { margin: 0 auto; text-align: center; }
+  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+  .process-steps::before { content: ''; position: absolute; top: 27px; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, var(--blue), var(--purple), var(--orange)); opacity: 0.2; }
+  .process-step { text-align: center; padding: 0 16px; }
+  .step-num { width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; position: relative; z-index: 1; }
+  .step-num.s1 { background: var(--blue); color: var(--white); box-shadow: 0 4px 14px rgba(29,111,232,0.35); }
+  .step-num.s2 { background: var(--white); color: var(--purple); border: 2px solid var(--purple); }
+  .step-num.s3 { background: var(--white); color: var(--blue); border: 2px solid var(--blue); }
+  .step-num.s4 { background: var(--orange); color: var(--white); box-shadow: 0 4px 14px rgba(249,115,22,0.35); }
+  .process-step h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 7px; font-family: 'DM Sans', sans-serif; }
+  .process-step p { font-size: 12px; color: var(--text-light); line-height: 1.65; }
+
+  /* ─── CONTACT ─────────────────────────────── */
+  .contact { padding: 64px 24px; background: var(--white); }
+  .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .contact-info h2 { font-size: 34px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+  .contact-info > p { font-size: 15px; color: var(--text-light); line-height: 1.75; margin-bottom: 28px; }
+  .contact-detail { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+  .contact-icon { width: 36px; height: 36px; border-radius: 9px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+  .c-blue   { background: rgba(29,111,232,0.08); }
+  .c-purple { background: rgba(124,58,237,0.08); }
+  .c-orange { background: rgba(249,115,22,0.08); }
+  .contact-detail h4 { font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: 2px; font-family: 'DM Sans', sans-serif; }
+  .contact-detail p { font-size: 13px; color: var(--text-light); }
+  .contact-form { background: var(--light); border-radius: 14px; padding: 32px; border: 1px solid var(--border); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--text-mid); margin-bottom: 6px; letter-spacing: 0.02em; }
+  .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 10px 14px; background: var(--white); border: 1.5px solid var(--border); border-radius: 7px; font-size: 13px; font-family: 'DM Sans', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s, box-shadow 0.2s; appearance: none; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(29,111,232,0.1); }
+  .form-group textarea { resize: vertical; min-height: 96px; }
+  .btn-submit { width: 100%; padding: 13px; background: var(--blue); color: var(--white); border: none; border-radius: 7px; font-size: 14px; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; letter-spacing: 0.02em; transition: background 0.2s, transform 0.15s; box-shadow: 0 4px 14px rgba(29,111,232,0.3); }
+  .btn-submit:hover { background: var(--blue-dark); transform: translateY(-1px); }
+  .form-note { font-size: 11px; color: var(--text-light); text-align: center; margin-top: 10px; }
+  .form-note span { color: var(--orange); font-weight: 600; }
+
+  /* ─── FOOTER ──────────────────────────────── */
+  footer { background: var(--blue-deep); padding: 52px 24px 28px; color: rgba(255,255,255,0.55); }
+  .footer-top { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .footer-logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--white); letter-spacing: 0.04em; margin-bottom: 3px; }
+  .footer-logo-sub { font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+  .footer-desc { font-size: 13px; line-height: 1.7; max-width: 240px; }
+  .footer-socials { display: flex; gap: 8px; margin-top: 16px; }
+  .social-btn { width: 32px; height: 32px; border-radius: 7px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 12px; text-decoration: none; color: rgba(255,255,255,0.45); transition: background 0.2s, color 0.2s; }
+  .social-btn:hover { background: rgba(29,111,232,0.3); color: var(--white); }
+  .footer-col h5 { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white); margin-bottom: 14px; font-family: 'DM Sans', sans-serif; }
+  .footer-col a { display: block; font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; margin-bottom: 8px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--white); }
+  .footer-bottom { max-width: 1160px; margin: 22px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 11px; color: rgba(255,255,255,0.22); }
+  .footer-bottom a { color: rgba(255,255,255,0.32); text-decoration: none; }
+  .footer-bottom a:hover { color: rgba(255,255,255,0.6); }
+  .footer-accent-bar { height: 3px; background: linear-gradient(90deg, var(--blue), var(--purple), var(--orange)); }
+
+  /* ─── ANIMATIONS ──────────────────────────── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-badge   { animation: fadeUp 0.5s ease both; animation-delay: 0.1s; opacity: 0; }
+  .hero h1      { animation: fadeUp 0.5s ease both; animation-delay: 0.2s; opacity: 0; }
+  .hero p       { animation: fadeUp 0.5s ease both; animation-delay: 0.3s; opacity: 0; }
+  .hero-actions { animation: fadeUp 0.5s ease both; animation-delay: 0.4s; opacity: 0; }
+  .hero-visual  { animation: fadeUp 0.6s ease both; animation-delay: 0.3s; opacity: 0; }
+
+  /* ─── RESPONSIVE ──────────────────────────── */
+
+  /* Tablet: ≤ 1024px */
+  @media (max-width: 1024px) {
+    .hero h1 { font-size: 38px; }
+    .hero-inner { gap: 40px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .features-layout { gap: 40px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .footer-top .footer-brand { grid-column: 1 / -1; }
+
+    /* Clients — show at tablet with improved layout */
+    .clients { padding: 24px 24px; }
+    .clients-inner { gap: 20px; flex-direction: column; align-items: flex-start; }
+    .clients-label { font-size: 10px; }
+    .clients-logos { gap: 20px; flex-wrap: wrap; }
+    .client-logo { font-size: 14px; color: var(--text-mid); }
+    .client-logo:hover { color: var(--blue); }
+  }
+
+  /* ── MOBILE BASE: ≤ 768px ─────────────────── */
+  @media (max-width: 768px) {
+    /* Header */
+    nav { display: none; }
+    .hamburger { display: flex; }
+    .mobile-nav.open { display: flex; }
+
+    /* Hero — stack, hide stat panel */
+    .hero { padding: 40px 20px 36px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 28px; }
+    .hero h1 { font-size: 32px; }
+    .hero p { font-size: 15px; max-width: 100%; }
+    .hero-visual { display: none; } /* hide stats panel — hero text + CTA is enough */
+
+    /* Hide clients bar entirely on small mobile */
+
+    /* Services — keep cards at tablet, 1-col grid */
+    .services { padding: 40px 20px; }
+    .section-title { font-size: 27px; }
+    .section-sub { font-size: 14px; margin-bottom: 24px; }
+    .services-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    /* Features — hide the metrics panel, show only text */
+    .features { padding: 40px 20px; }
+    .features-layout { grid-template-columns: 1fr; gap: 28px; }
+    .features-panel { display: none; }
+
+    /* Process — 2×2 grid, hide descriptions */
+    .process { padding: 40px 20px; }
+    .process-header { margin-bottom: 32px; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 22px; }
+    .process-steps::before { display: none; }
+    .process-step p { display: none; }
+    .process-step h4 { font-size: 13px; }
+
+    /* Contact — stack info above form, hide contact detail descriptions */
+    .contact { padding: 40px 20px; }
+    .contact-layout { grid-template-columns: 1fr; gap: 28px; }
+    .contact-info > p { display: none; } /* hide the paragraph, keep heading + contact details */
+
+    /* Footer — simplified: brand + 2 essential columns only */
+    footer { padding: 36px 20px 20px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .footer-top .footer-brand { grid-column: 1 / -1; }
+    .footer-desc { max-width: 100%; }
+    .footer-col:last-child { display: none; } /* hide Resources column */
+  }
+
+  /* ── SMALL MOBILE: ≤ 480px ────────────────── */
+  @media (max-width: 480px) {
+    .header-inner { padding: 0 16px; }
+
+    /* Hide clients on small mobile */
+    .clients { display: none; }
+
+    /* Hero */
+    .hero { padding: 32px 16px 28px; }
+    .hero h1 { font-size: 27px; }
+    .hero p { font-size: 14px; }
+    .hero-actions { flex-direction: column; align-items: stretch; gap: 10px; }
+    .btn-primary { text-align: center; }
+    .btn-secondary { justify-content: center; }
+
+    /* Services — accordion on small mobile */
+    .services { padding: 32px 16px; }
+    .services-grid { grid-template-columns: 1fr; gap: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .service-card { border: none; border-bottom: 1px solid var(--border); border-radius: 0; padding: 0; transition: background 0.2s; }
+    .service-card:last-child { border-bottom: none; }
+    .service-card::before { display: none; }
+    .service-card:hover { transform: none; box-shadow: none; }
+    /* Accordion header */
+    .service-card h3 { font-size: 14px; font-weight: 600; padding: 14px 16px; margin: 0; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+    .service-card h3::after { content: '+'; font-family: sans-serif; font-size: 20px; color: var(--blue); font-weight: 300; line-height: 1; transition: transform 0.25s; }
+    .service-card.open h3::after { content: '−'; }
+    /* Accordion body — hidden by default */
+    .service-card .service-body { display: none; padding: 0 16px 16px; }
+    .service-card.open .service-body { display: block; }
+    .service-card .service-icon { margin-bottom: 10px; }
+    .service-card.open { background: var(--light); }
+
+
+    /* Features */
+    .features { padding: 32px 16px; }
+    .feature-list { gap: 18px; }
+
+    /* Process — single column, icon + title inline */
+    .process { padding: 32px 16px; }
+    .process-steps { grid-template-columns: 1fr; gap: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--white); }
+    .process-step { display: flex; align-items: center; gap: 14px; text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--border); }
+    .process-step:last-child { border-bottom: none; }
+    .step-num { margin: 0; flex-shrink: 0; width: 40px; height: 40px; font-size: 14px; }
+    .process-step h4 { margin-bottom: 0; font-size: 13px; }
+
+    /* Contact */
+    .contact { padding: 32px 16px; }
+    .contact-form { padding: 20px 16px; }
+    .form-row { grid-template-columns: 1fr; }
+    .contact-info h2 { font-size: 24px; }
+
+    /* Footer — single column, hide company col too */
+    .footer-top { grid-template-columns: 1fr; gap: 20px; }
+    .footer-top .footer-col:nth-child(3) { display: none; } /* hide Company column */
+    footer { padding: 28px 16px 16px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .footer-socials { margin-top: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ══════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <svg class="logo-mark" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="arc-top" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#7C3AED"/>
+            <stop offset="100%" stop-color="#1D6FE8"/>
+          </linearGradient>
+          <linearGradient id="arc-bot" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#1D6FE8"/>
+            <stop offset="100%" stop-color="#7C3AED" stop-opacity="0.5"/>
+          </linearGradient>
+          <radialGradient id="inner-fill" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.12"/>
+            <stop offset="100%" stop-color="#1D6FE8" stop-opacity="0.03"/>
+          </radialGradient>
+        </defs>
+        <circle cx="22" cy="22" r="20" fill="none" stroke="#1D6FE8" stroke-width="0.5" opacity="0.25"/>
+        <path d="M22 2 A20 20 0 0 1 42 22" fill="none" stroke="url(#arc-top)" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M22 42 A20 20 0 0 1 2 22" fill="none" stroke="url(#arc-bot)" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M37 31 A20 20 0 0 1 31 37" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="22" cy="22" r="13" fill="url(#inner-fill)"/>
+        <circle cx="22" cy="22" r="13" fill="none" stroke="#1D6FE8" stroke-width="0.75" opacity="0.3"/>
+        <text x="22" y="26.5" text-anchor="middle" font-size="10" font-weight="800" fill="#0D1E3D" font-family="Georgia, serif" letter-spacing="0.5">JVR</text>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-name">JVR Enterprises</span>
+        <span class="logo-tagline">LLC</span>
+      </div>
+    </a>
+
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#features">Why Us</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta">Get Started</a>
+    </nav>
+
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#services" onclick="toggleMenu()">Services</a>
+    <a href="#features" onclick="toggleMenu()">Why Us</a>
+    <a href="#process" onclick="toggleMenu()">Process</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
+    <a href="#contact" class="nav-cta" onclick="toggleMenu()">Get Started</a>
+  </div>
+</header>
+
+
+<!-- ═══ HERO ═════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span></span> Enterprise Software Consulting</div>
+      <h1>Transform Your <em>Enterprise</em> Through Smarter Software</h1>
+      <p>JVR Enterprises LLC partners with organizations to architect, implement, and optimize enterprise-grade software solutions that drive measurable business outcomes.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Schedule a Consultation</a>
+        <a href="#services" class="btn-secondary">
+          <div class="arrow">→</div>Explore Services
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="stat-grid">
+        <div class="stat-card wide">
+          <div>
+            <div class="stat-num">150+</div>
+            <div class="stat-label">Enterprise Projects Delivered</div>
+          </div>
+          <div class="stat-badge">↑ 32% YoY Growth</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon blue">🏗️</div>
+          <div class="stat-num">98%</div>
+          <div class="stat-label">Client Retention Rate</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon purple">⚡</div>
+          <div class="stat-num">12+</div>
+          <div class="stat-label">Years of Experience</div>
+        </div>
+        <div class="stat-card wide">
+          <div class="stat-icon orange" style="margin-bottom:0; margin-right:10px;">🌐</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Global Enterprise Clients</div>
+            <div style="font-size:11px;color:var(--text-light);">Serving Fortune 500 companies across North America &amp; Europe</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CLIENTS ───────────────────────────── -->
+<div class="clients">
+  <div class="clients-inner">
+    <div class="clients-label">Trusted by</div>
+    <div class="clients-logos">
+      <div class="client-logo">Nexcorp</div>
+      <div class="client-logo">Meridian</div>
+      <div class="client-logo">Vantage Group</div>
+      <div class="client-logo">Stratos</div>
+      <div class="client-logo">Apex Systems</div>
+      <div class="client-logo">Orion Tech</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ SERVICES ──────────────────────────── -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">End-to-End Enterprise Software Solutions</h2>
+    <p class="section-sub">From strategy to deployment, we deliver scalable, secure, and high-performance software tailored to your organization's needs.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Enterprise Architecture</h3>
+        <div class="service-body">
+          <div class="service-icon svc-blue">🏛️</div>
+          <p>Design robust, scalable system architectures aligned with your long-term business strategy and technology roadmap.</p>
+          <a href="#contact" class="service-link">Learn more →</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <h3>Systems Integration</h3>
+        <div class="service-body">
+          <div class="service-icon svc-purple">🔗</div>
+          <p>Seamlessly connect legacy systems, cloud platforms, and third-party applications into a unified, efficient ecosystem.</p>
+          <a href="#contact" class="service-link">Learn more →</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <h3>Cloud Transformation</h3>
+        <div class="service-body">
+          <div class="service-icon svc-orange">☁️</div>
+          <p>Migrate and modernize your infrastructure with proven cloud strategies that reduce costs and increase agility.</p>
+          <a href="#contact" class="service-link">Learn more →</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <h3>Data &amp; Analytics</h3>
+        <div class="service-body">
+          <div class="service-icon svc-blue2">📊</div>
+          <p>Unlock actionable insights from your enterprise data with custom analytics platforms and business intelligence tools.</p>
+          <a href="#contact" class="service-link">Learn more →</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <h3>Security &amp; Compliance</h3>
+        <div class="service-body">
+          <div class="service-icon svc-purple2">🛡️</div>
+          <p>Implement enterprise-grade security frameworks and ensure compliance with industry standards and regulations.</p>
+          <a href="#contact" class="service-link">Learn more →</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <h3>AI &amp; Automation</h3>
+        <div class="service-body">
+          <div class="service-icon svc-orange2">🤖</div>
+          <p>Leverage machine learning and intelligent automation to streamline operations and create competitive advantage.</p>
+          <a href="#contact" class="service-link">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FEATURES / WHY US ─────────────────── -->
+<section class="features" id="features">
+  <div class="section-inner">
+    <div class="features-layout">
+      <div>
+        <div class="section-label">Why JVR</div>
+        <h2 class="section-title">Built for Enterprise.<br/>Designed to Scale.</h2>
+        <p class="section-sub">We combine deep technical expertise with strategic business acumen to deliver solutions that actually move the needle.</p>
+        <div class="feature-list">
+          <div class="feature-item">
+            <div class="feature-dot b">🎯</div>
+            <div>
+              <h4>Outcome-Driven Methodology</h4>
+              <p>Every engagement is anchored to measurable KPIs and business outcomes — not just technical deliverables.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot p">🔒</div>
+            <div>
+              <h4>Enterprise-Grade Security</h4>
+              <p>SOC 2 compliant practices built into every solution from day one — security is never an afterthought.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot o">⚡</div>
+            <div>
+              <h4>Rapid Time-to-Value</h4>
+              <p>Our agile delivery model ensures you see measurable results within the first 90 days of engagement.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot b">🤝</div>
+            <div>
+              <h4>Dedicated Partnership Model</h4>
+              <p>A senior consultant remains your dedicated point of contact throughout the entire engagement lifecycle.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="features-panel">
+        <div class="panel-header">
+          <div class="panel-dot" style="background:#F97316;"></div>
+          <div class="panel-dot" style="background:#1D6FE8;"></div>
+          <div class="panel-dot" style="background:#7C3AED;"></div>
+          <div class="panel-title">performance_metrics.json</div>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Client Satisfaction</span>
+          <div class="metric-bar-wrap"><div class="metric-bar" style="width:97%;background:linear-gradient(90deg,#1D6FE8,#7C3AED);"></div></div>
+          <span class="metric-val">97%</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">On-Time Delivery</span>
+          <div class="metric-bar-wrap"><div class="metric-bar" style="width:94%;background:linear-gradient(90deg,#7C3AED,#1D6FE8);"></div></div>
+          <span class="metric-val">94%</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Cost Reduction</span>
+          <div class="metric-bar-wrap"><div class="metric-bar" style="width:38%;background:#F97316;"></div></div>
+          <span class="metric-val">38%</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Performance Uplift</span>
+          <div class="metric-bar-wrap"><div class="metric-bar" style="width:65%;background:linear-gradient(90deg,#1D6FE8,#F97316);"></div></div>
+          <span class="metric-val">2.4×</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Scope Accuracy</span>
+          <div class="metric-bar-wrap"><div class="metric-bar" style="width:91%;background:linear-gradient(90deg,#7C3AED,#F97316);"></div></div>
+          <span class="metric-val">91%</span>
+        </div>
+        <div class="roi-box">
+          <div style="font-size:10px;font-weight:700;color:#F97316;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px;">Average ROI</div>
+          <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:800;color:#fff;line-height:1;">340%</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px;">Within the first 18 months of engagement</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ PROCESS ────────────────────────────── -->
+<section class="process" id="process">
+  <div class="section-inner">
+    <div class="process-header">
+      <div class="section-label">How We Work</div>
+      <h2 class="section-title">Our Proven Four-Step Process</h2>
+      <p class="section-sub">A structured, transparent methodology that aligns your team and ours from day one.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num s1">01</div>
+        <div>
+          <h4>Discovery &amp; Audit</h4>
+          <p>We assess your current systems, goals, and constraints to build a complete picture of where you stand.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num s2">02</div>
+        <div>
+          <h4>Strategy &amp; Roadmap</h4>
+          <p>We co-create a prioritized technology roadmap with clear milestones, resource plans, and success metrics.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num s3">03</div>
+        <div>
+          <h4>Build &amp; Integrate</h4>
+          <p>Our engineers deliver in agile sprints with continuous stakeholder visibility and zero-surprise scope management.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num s4">04</div>
+        <div>
+          <h4>Optimize &amp; Scale</h4>
+          <p>Post-launch we monitor, tune, and evolve your solution ensuring it scales with your growing business.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CONTACT ────────────────────────────── -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-layout">
+      <div class="contact-info">
+        <div class="section-label">Get In Touch</div>
+        <h2>Let's Build Something Great Together</h2>
+        <p>Ready to transform your enterprise software landscape? Tell us about your challenge and we'll respond within one business day.</p>
+        <div class="contact-detail">
+          <div class="contact-icon c-blue">📧</div>
+          <div><h4>Email Us</h4><p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a5cdc0c9c9cae5cfd3d7c0cbd1c0d7d5d7ccd6c0d68bc6cac8">[email&#160;protected]</a></p></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon c-purple">📞</div>
+          <div><h4>Call Us</h4><p>+1 (800) 555-0199</p></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon c-orange">📍</div>
+          <div><h4>Headquarters</h4><p>Grand Rapids, MI · New York, NY</p></div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="John" /></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith" /></div>
+        </div>
+        <div class="form-group"><label>Work Email</label><input type="email" placeholder="john@company.com" /></div>
+        <div class="form-group"><label>Company</label><input type="text" placeholder="Acme Corporation" /></div>
+        <div class="form-group">
+          <label>Service Interest</label>
+          <select>
+            <option>Select a service...</option>
+            <option>Enterprise Architecture</option>
+            <option>Systems Integration</option>
+            <option>Cloud Transformation</option>
+            <option>Data &amp; Analytics</option>
+            <option>Security &amp; Compliance</option>
+            <option>AI &amp; Automation</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Tell Us About Your Project</label><textarea placeholder="Briefly describe your challenge or project goals..."></textarea></div>
+        <button class="btn-submit">Send Message →</button>
+        <p class="form-note">We typically respond within <span>1 business day</span>. No spam, ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ─────────────────────────────── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo-text">JVR Enterprises</div>
+      <div class="footer-logo-sub">LLC · Software Consulting</div>
+      <p class="footer-desc">Architecting enterprise software solutions that scale with your ambition. Trusted by leading organizations across North America.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">gh</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <a href="#">Enterprise Architecture</a>
+      <a href="#">Systems Integration</a>
+      <a href="#">Cloud Transformation</a>
+      <a href="#">Data &amp; Analytics</a>
+      <a href="#">Security &amp; Compliance</a>
+      <a href="#">AI &amp; Automation</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="#">About JVR</a>
+      <a href="#">Our Team</a>
+      <a href="#">Case Studies</a>
+      <a href="#">Careers</a>
+      <a href="#">Blog</a>
+      <a href="#">Press</a>
+    </div>
+    <div class="footer-col">
+      <h5>Resources</h5>
+      <a href="#">Documentation</a>
+      <a href="#">White Papers</a>
+      <a href="#">Webinars</a>
+      <a href="#">Support</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 JVR Enterprises LLC. All rights reserved.</div>
+    <div>Grand Rapids, MI · <a href="/cdn-cgi/l/email-protection#4f272a2323200f25393d2a213b2a3d3f3d263c2a3c612c2022"><span class="__cf_email__" data-cfemail="254d4049494a654f5357404b51405755574c5640560b464a48">[email&#160;protected]</span></a></div>
+  </div>
+</footer>
+<div class="footer-accent-bar"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function toggleMenu() {
+    const nav = document.getElementById('mobileNav');
+    nav.classList.toggle('open');
+  }
+
+  // Service card accordion — click toggles on small mobile (CSS hides body at ≤480px)
+  document.querySelectorAll('.services-grid .service-card h3').forEach(function(h3) {
+    h3.addEventListener('click', function() {
+      var card = this.closest('.service-card');
+      var isOpen = card.classList.contains('open');
+      document.querySelectorAll('.service-card').forEach(function(c) { c.classList.remove('open'); });
+      if (!isOpen) card.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
