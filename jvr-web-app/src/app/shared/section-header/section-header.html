@@ -1,0 +1,9 @@
+<div class="section-header-block" [class.text-center]="align === 'center'" [class.dark]="dark">
+  <span class="section-label" [class.light]="dark">{{ label }}</span>
+  <h2 class="section-title">
+    <ng-content />
+  </h2>
+  @if (sub) {
+    <p class="section-sub" [class.mx-auto]="align === 'center'">{{ sub }}</p>
+  }
+</div>

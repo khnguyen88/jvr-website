@@ -100,6 +100,8 @@
     background-color: var(--orange);
     border-radius: 6px;
     margin: 4px 8px;
+    box-shadow: 0 0 14px rgba(249, 115, 22, 0.45);
+    transition: box-shadow 0.2s, background-color 0.2s;
   }
 
   :host ::ng-deep .mobile-cta-item > .p-menubar-item-content .p-menubar-item-link {
@@ -110,26 +112,6 @@
 
   :host ::ng-deep .mobile-cta-item > .p-menubar-item-content:hover {
     background-color: var(--orange-deep) !important;
+    box-shadow: 0 0 24px rgba(249, 115, 22, 0.7) !important;
   }
-}
-
-.cta-btn {
-  --p-button-primary-background: var(--orange);
-  --p-button-primary-hover-background: var(--orange-deep);
-  --p-button-primary-active-background: var(--orange-deep);
-  --p-button-primary-border-color: var(--orange);
-  --p-button-primary-hover-border-color: var(--orange-deep);
-  --p-button-primary-active-border-color: var(--orange-deep);
-  --p-button-primary-color: #ffffff;
-  --p-button-primary-hover-color: #ffffff;
-  --p-button-primary-active-color: #ffffff;
-}
-
-:host ::ng-deep .cta-btn .p-button {
-  box-shadow: 0 0 14px rgba(249, 115, 22, 0.45);
-  transition: box-shadow 0.2s;
-}
-
-:host ::ng-deep .cta-btn .p-button:hover {
-  box-shadow: 0 0 22px rgba(249, 115, 22, 0.7);
 }

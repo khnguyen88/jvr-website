@@ -1,0 +1,12 @@
+<div class="clients-strip">
+  <div class="section-inner">
+    <div class="flex align-items-center gap-4 flex-wrap justify-content-center">
+      <span class="clients-label">Trusted by</span>
+      <div class="clients-logos flex align-items-center gap-5 flex-wrap justify-content-center">
+        @for (client of clients; track client) {
+          <div class="client-logo">{{ client }}</div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

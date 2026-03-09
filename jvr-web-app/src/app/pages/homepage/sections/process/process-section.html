@@ -1,0 +1,25 @@
+<section id="process" class="process-section">
+  <div class="section-inner">
+
+    <app-section-header
+      class="mb-7"
+      label="How We Work"
+      sub="A disciplined, repeatable framework that de-risks delivery and maximizes value at every stage of your engagement."
+    >
+      Our Proven Four-Step Process
+    </app-section-header>
+
+    <div class="grid">
+      @for (step of steps; track step.num) {
+        <div class="col-12 sm:col-6 lg:col-3">
+          <div class="step-card text-center p-4">
+            <div [class]="'step-num step-' + step.colorClass">{{ step.num }}</div>
+            <h4 class="step-title">{{ step.title }}</h4>
+            <p class="step-desc">{{ step.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>
