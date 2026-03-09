@@ -12,12 +12,10 @@
   padding-right: 0;
 }
 
-/* Hide the mobile "Get Started" item on desktop */
 :host ::ng-deep .mobile-cta-item {
   display: none;
 }
 
-/* On hamburger breakpoint: hide the end-slot button, show the menu item */
 @media (max-width: 960px) {
   .cta-btn-wrapper {
     display: none;
@@ -44,7 +42,6 @@
   }
 }
 
-/* CTA button — orange colors */
 .cta-btn {
   --p-button-primary-background: var(--orange);
   --p-button-primary-hover-background: var(--orange-deep);
@@ -57,7 +54,6 @@
   --p-button-primary-active-color: #ffffff;
 }
 
-/* Glow effect on the button element itself */
 :host ::ng-deep .cta-btn .p-button {
   box-shadow: 0 0 14px rgba(249, 115, 22, 0.45);
   transition: box-shadow 0.2s;
