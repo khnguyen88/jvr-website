@@ -12,7 +12,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class TopMenubar {
   items: MenuItem[] = [
-    { label: 'Home', routerLink: '/' },
+    { label: 'Home', routerLink: '/home' },
     { label: 'Services', routerLink: '/services' },
     { label: 'Why Us', routerLink: '/why-us' },
     { label: 'About', routerLink: '/about' },

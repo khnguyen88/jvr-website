@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 
+import { LandingPage } from './pages/landing-page/landing-page';
 import { Homepage } from './pages/homepage/homepage';
 import { ServicesPage } from './pages/services-page/services-page';
 import { WhyUsPage } from './pages/why-us-page/why-us-page';
@@ -11,7 +12,8 @@ import { BlogPage } from './pages/blog-page/blog-page';
 import { PressPage } from './pages/press-page/press-page';
 
 export const routes: Routes = [
-  { path: '', component: Homepage },
+  { path: '', component: LandingPage },
+  { path: 'home', component: Homepage },
   { path: 'services', component: ServicesPage },
   { path: 'why-us', component: WhyUsPage },
   { path: 'about', component: AboutUs },

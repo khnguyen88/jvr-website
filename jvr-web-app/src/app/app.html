@@ -1,5 +1,9 @@
-<app-top-menubar />
-<main class="page-content">
+@if (showShell()) {
+  <app-top-menubar />
+}
+<main [class]="showShell() ? 'page-content' : ''">
   <router-outlet />
 </main>
-<app-footer />
+@if (showShell()) {
+  <app-footer />
+}

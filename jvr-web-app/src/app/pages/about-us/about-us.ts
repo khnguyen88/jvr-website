@@ -20,7 +20,7 @@ export class AboutUs {
     },
     {
       year: '2010',
-      text: 'JVR Enterprises was founded. After years of watching great companies drift away from their technical roots, Jay set out to build a firm that never would.',
+      text: 'JvR Enterprises was founded. After years of watching great companies drift away from their technical roots, Jay set out to build a firm that never would.',
     },
     {
       year: '2014',
@@ -71,7 +71,7 @@ export class AboutUs {
       role: 'Founder & Principal Consultant',
       initials: 'JvR',
       colorClass: 'blue',
-      bio: 'Jay has been writing software since 1990 and working in internet consulting since 1999. He started JVR in 2010 with a clear goal: build a firm where developers are trusted partners, not order-takers. He specializes in Azure and enterprise systems, speaks at tech meetups across the region, and organizes Beer City Code — one of the Midwest\'s best developer conferences.',
+      bio: 'Jay has been writing software since 1990 and working in internet consulting since 1999. He started JvR in 2010 with a clear goal: build a firm where developers are trusted partners, not order-takers. He specializes in Azure and enterprise systems, speaks at tech meetups across the region, and organizes Beer City Code — one of the Midwest\'s best developer conferences.',
       tags: ['Azure', 'Enterprise Architecture', 'C#', '.NET'],
     },
     {
@@ -80,7 +80,7 @@ export class AboutUs {
       role: 'Senior Consultant — AWS & QA Automation',
       initials: 'MW',
       colorClass: 'purple',
-      bio: 'Mike joined JVR in 2014 and has been a steady, reliable part of the team ever since. He co-led the build of Applications & Enrollment for National Heritage Academies\' Student Information System, and has since become our go-to for AWS infrastructure and Playwright-based test automation. Outside of work, he volunteers his time as a live-streaming technician for roller derby competitions.',
+      bio: 'Mike joined JvR in 2014 and has been a steady, reliable part of the team ever since. He co-led the build of Applications & Enrollment for National Heritage Academies\' Student Information System, and has since become our go-to for AWS infrastructure and Playwright-based test automation. Outside of work, he volunteers his time as a live-streaming technician for roller derby competitions.',
       tags: ['AWS', 'Playwright', 'Test Automation', 'Node.js'],
     },
     {
@@ -88,7 +88,7 @@ export class AboutUs {
       role: 'Full-Stack Consultant — Angular & .NET',
       initials: 'KN',
       colorClass: 'orange',
-      bio: 'Khiem came to software after a decade as a licensed Professional Engineer — a background that shows in how he approaches complex systems. He holds a Master\'s in Applied Computer Science from Grand Valley State University and has been with JVR since 2022, collaborating with senior developers at Consumers Energy on Angular UI components and .NET API development for a large employee scheduling platform.',
+      bio: 'Khiem came to software after a decade as a licensed Professional Engineer — a background that shows in how he approaches complex systems. He holds a Master\'s in Applied Computer Science from Grand Valley State University and has been with JvR since 2022, collaborating with senior developers at Consumers Energy on Angular UI components and .NET API development for a large employee scheduling platform.',
       bio2: 'Outside of client work, he designed and built a personal IoT gardening system — combining an AI-powered backend using Semantic Kernel, a real-time Angular dashboard, and multi-cloud integration.',
       tags: ['Angular', 'TypeScript / JavaScript', '.NET / C#', 'AI / Semantic Kernel'],
     },
