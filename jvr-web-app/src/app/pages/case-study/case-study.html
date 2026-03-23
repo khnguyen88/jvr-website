@@ -1,1 +1,140 @@
-<p>case-study works!</p>
+<!-- ─── HERO ─────────────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="section-inner">
+    <span class="section-label light">Case Studies</span>
+    <h1 class="hero-heading">
+      Problems Solved,<br /><em>Outcomes Delivered</em>
+    </h1>
+    <p class="hero-sub">
+      Real projects. Measurable results. A selection of the challenges we have helped enterprise
+      teams navigate — from pipeline performance to complex system migrations.
+    </p>
+  </div>
+</section>
+
+<!-- ─── CONTEXT NOTE ──────────────────────────────────────────── -->
+<section class="context-section">
+  <div class="section-inner">
+    <div class="context-note">
+      <i class="pi pi-info-circle context-icon"></i>
+      <p>
+        Client names and logos are not currently published at this time. Projects below are
+        described by industry and challenge type. We are actively working on formal case study
+        approvals with current clients.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CASE STUDIES ──────────────────────────────────────────── -->
+<section class="studies-section">
+  <div class="section-inner">
+    <app-section-header
+      label="Selected Work"
+      sub="Each project is different. What they share is a clear challenge, a deliberate solution, and a concrete outcome."
+    >
+      Work We're Proud Of
+    </app-section-header>
+
+    <div class="studies-list mt-5">
+      @for (study of caseStudies; track study.title; let i = $index) {
+        <div class="study-card" [id]="study.id" [class.study-alt]="i % 2 !== 0">
+
+          <div class="study-body">
+            <div class="study-header">
+              <span [class]="'study-industry-tag industry-' + study.colorClass">{{ study.industry }}</span>
+              <h3 class="study-title">{{ study.title }}</h3>
+            </div>
+
+            <div class="study-sections">
+              <div class="study-block">
+                <span class="study-block-label">The Challenge</span>
+                <p class="study-block-text">{{ study.challenge }}</p>
+              </div>
+              <div class="study-block">
+                <span class="study-block-label">What We Built</span>
+                <p class="study-block-text">{{ study.solution }}</p>
+              </div>
+              <div class="study-block">
+                <span class="study-block-label">The Outcome</span>
+                <p class="study-block-text">{{ study.outcome }}</p>
+              </div>
+            </div>
+
+            @if (study.impact) {
+              <p class="study-impact">{{ study.impact }}</p>
+            }
+          </div>
+
+          @if (study.stat) {
+            <div [class]="'study-stat-panel stat-' + study.colorClass">
+              <div class="stat-value">{{ study.stat.value }}</div>
+              <div class="stat-label">{{ study.stat.label }}</div>
+            </div>
+          }
+
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ─── INDUSTRIES SERVED ─────────────────────────────────────── -->
+<section class="industries-section">
+  <div class="section-inner">
+    <app-section-header
+      label="Industries Served"
+      [dark]="true"
+      sub="We have worked across a range of enterprise industries — bringing technical depth to each one without pretending to be domain experts."
+    >
+      Where We Have Worked
+    </app-section-header>
+
+    <div class="industries-row flex flex-wrap justify-content-center gap-3 mt-5">
+      @for (ind of industries; track ind.label) {
+        <div class="industry-chip">
+          <i [class]="'pi ' + ind.icon + ' industry-chip-icon'"></i>
+          <span>{{ ind.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ─── LESSON LEARNED ────────────────────────────────────────── -->
+<section class="lesson-section">
+  <div class="section-inner">
+    <div class="lesson-card">
+      <div class="lesson-quote-mark">"</div>
+      <blockquote class="lesson-quote">
+        No matter how great the solution is, the people who use it every day are the ones who have
+        to see the value.
+      </blockquote>
+      <p class="lesson-context">
+        We built a supply chain visibility platform that was technically excellent — and hit a wall
+        with stakeholder buy-in across the supply chain. The lesson stuck with us: discovery is not
+        just about requirements. It is about understanding who needs to believe in the solution
+        before a single line of code is written.
+      </p>
+      <cite class="lesson-cite">— Jay von Rosen, Founder</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ───────────────────────────────────────────────────── -->
+<section class="cs-cta-section">
+  <div class="section-inner text-center">
+    <span class="section-label">Work With Us</span>
+    <h2 class="section-title cta-heading">
+      Have a Challenge<br /><em class="cta-em">Worth Solving?</em>
+    </h2>
+    <p class="section-sub mx-auto cta-sub">
+      These projects all started the same way yours would — with a conversation. Tell us what you
+      are working on and we will give you an honest picture of how we can help.
+    </p>
+    <div class="cta-actions flex justify-content-center gap-3 mt-5 flex-wrap">
+      <a routerLink="/contact" class="btn-primary-cta">Start a Conversation</a>
+      <a routerLink="/services" class="btn-ghost-cta">Explore Our Services →</a>
+    </div>
+  </div>
+</section>

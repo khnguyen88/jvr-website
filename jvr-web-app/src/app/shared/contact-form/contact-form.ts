@@ -105,17 +105,15 @@ export class ContactForm implements OnInit {
 
   // ── Inquiry type options ───────────────────────────────────────
   readonly inquiryOptions: InquiryOption[] = [
-    { label: 'Frontend Development',      value: 'frontend' },
-    { label: 'Cloud Infrastructure',      value: 'cloud' },
-    { label: 'Backend Development & APIs', value: 'backend' },
-    { label: 'ETL & Data Pipelines',      value: 'etl' },
-    { label: 'Automated Testing & QA',    value: 'testing' },
-    { label: 'AI Workflow Integration',   value: 'ai' },
-    { label: 'Careers',                   value: 'careers' },
-    { label: 'Business Consulting',       value: 'consulting' },
-    { label: 'Billing',                   value: 'billing' },
-    { label: 'Project Management',        value: 'project-management' },
-    { label: 'UX/UI Design',              value: 'ux-design' },
+    { label: 'Full-Stack Development',       value: 'full-stack' },
+    { label: 'Cloud Architecture & Migration', value: 'cloud' },
+    { label: 'ETL & Data Pipelines',         value: 'etl' },
+    { label: 'Automated Testing & QA',       value: 'testing' },
+    { label: 'AI Workflow Integration',      value: 'ai' },
+    { label: 'Team Augmentation',            value: 'team' },
+    { label: 'General Inquiry',              value: 'general' },
+    { label: 'Careers',                      value: 'careers' },
+    { label: 'Billing',                      value: 'billing' },
   ];
 
   // ── Whether the form has been touched at all ──────────────────

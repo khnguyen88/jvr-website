@@ -11,36 +11,36 @@ import { SectionHeader } from '../../../../shared/section-header/section-header'
 export class WhyJvrSection {
   features = [
     {
-      icon: 'pi-handshake',
+      icon: 'pi-lock',
       dotColor: 'blue',
-      title: 'A Trusted Partner, Not a Vendor',
+      title: 'You Own the Solution',
       description:
-        'The client has the vision. We make it a reality. We embed with your team, share accountability, and take genuine ownership of outcomes.',
-    },
-    {
-      icon: 'pi-users',
-      dotColor: 'purple',
-      title: 'Team-First Approach',
-      description:
-        'We face every challenge together — internally and alongside our clients. When something needs solving, everyone is accountable for finding the solution.',
+        'We build within your environment, on your infrastructure. When the engagement ends, the solution is fully yours — documented, understood, and built the way your team works.',
     },
     {
       icon: 'pi-crosshairs',
-      dotColor: 'orange',
-      title: 'Practical Technology Selection',
+      dotColor: 'purple',
+      title: 'Your Needs Drive the Technology',
       description:
-        'We evaluate every technology on one question: does it genuinely help the client? We are not here to sell the latest trend — we are here to build the right solution.',
+        'We do not arrive with a preferred stack to promote. Every tool we recommend is evaluated on one question: does it genuinely fit your system, your team, and your goals?',
     },
     {
-      icon: 'pi-lightbulb',
-      dotColor: 'blue',
-      title: 'Genuine Passion for the Craft',
+      icon: 'pi-handshake',
+      dotColor: 'orange',
+      title: 'Clients Call Us Part of Their Team',
       description:
-        'Everyone on our team genuinely loves what they do. That enthusiasm is not a talking point — it shows up in how thoughtfully we build and how reliably we deliver.',
+        'The most consistent feedback we hear is that clients are glad to have us on their team — not working for them, on their team. That distinction is how we know an engagement is going well.',
+    },
+    {
+      icon: 'pi-chart-line',
+      dotColor: 'blue',
+      title: 'The Hard Problems Come to Us',
+      description:
+        'When difficult tasks come up, clients consistently hand them to us. That kind of trust is earned, not claimed — and it drives how we show up every day.',
     },
   ];
 
-  industries = ['Manufacturing', 'Retail', 'Energy', 'Education'];
+  industries = ['Manufacturing', 'Retail', 'Energy', 'Education', 'Insurance'];
 
   techStack = ['Azure', 'AWS', 'Angular', 'React', 'Vue', '.NET / C#', 'Node.js', 'Playwright'];
 }

@@ -20,8 +20,6 @@ export class TopMenubar {
       label: 'Resources',
       items: [
         { label: 'Case Studies', routerLink: '/case-studies' },
-        { label: 'Blog', routerLink: '/blog' },
-        { label: 'Press', routerLink: '/press' },
       ],
     },
     { label: 'Contact', routerLink: '/contact' },

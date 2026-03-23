@@ -50,11 +50,28 @@
   box-shadow: 0 6px 24px rgba(29, 111, 232, 0.45) !important;
 }
 
+/* ── Secondary text link ───────────────── */
+.cta-link-secondary {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.cta-link-secondary:hover { color: var(--blue-dark); }
+
 /* ── Detail line ───────────────────────── */
 .cta-details {
   font-size: 13px;
   color: var(--text-light);
 }
+
+.cta-detail-link {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.cta-detail-link:hover { color: var(--blue); }
 
 @media (max-width: 768px) {
   .cta-section  { padding: 64px 20px; }

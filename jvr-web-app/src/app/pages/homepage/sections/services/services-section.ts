@@ -12,46 +12,52 @@ import { SectionHeader } from '../../../../shared/section-header/section-header'
 export class ServicesSection {
   services = [
     {
-      icon: 'pi-desktop',
+      icon: 'pi-code',
       iconColor: 'blue',
-      title: 'Frontend Development',
+      title: 'Full-Stack Development',
+      fragment: 'full-stack',
       description:
-        'Enterprise web applications built with Angular, React, or Vue — responsive, dynamic, and designed to handle real complexity at scale.',
+        'Enterprise applications built across the full stack — Angular, React, or Vue on the front end with C#/.NET and Node.js on the back end, designed to handle real complexity at scale.',
     },
     {
       icon: 'pi-cloud',
       iconColor: 'purple',
-      title: 'Cloud Infrastructure',
+      title: 'Cloud Architecture',
+      fragment: 'cloud',
       description:
-        'Azure and AWS architecture, deployment, and ongoing operations. We bring deep platform expertise to cloud migrations and enterprise integrations.',
+        'Azure and AWS architecture, migrations, and ongoing operations. We bring deep platform expertise to cloud infrastructure and enterprise integrations.',
     },
     {
-      icon: 'pi-cog',
+      icon: 'pi-database',
       iconColor: 'orange',
-      title: 'Backend Development',
-      description:
-        'Solid, maintainable server-side systems built with C#/.NET and Node.js — REST APIs, service layers, and the infrastructure that keeps enterprise applications running.',
-    },
-    {
-      icon: 'pi-refresh',
-      iconColor: 'blue',
       title: 'ETL & Data Pipelines',
+      fragment: 'etl',
       description:
-        'Large-scale data movement built for reliability — whether for internal system functionality, reporting, or enterprise analytics workflows.',
+        'Large-scale data movement built for reliability — whether for internal system functionality, cloud migrations, or enterprise analytics workflows.',
     },
     {
       icon: 'pi-check-circle',
-      iconColor: 'purple',
+      iconColor: 'blue',
       title: 'Automated Testing & QA',
+      fragment: 'testing',
       description:
         'Playwright-based and custom automated testing integrated directly into your deployment pipeline — so quality is enforced at every release.',
     },
     {
       icon: 'pi-microchip',
-      iconColor: 'orange',
-      title: 'AI Integration',
+      iconColor: 'purple',
+      title: 'AI Workflow Integration',
+      fragment: 'ai',
       description:
         'Practical AI adoption into existing development workflows and business processes — focused on real utility and measurable outcomes, not trends.',
+    },
+    {
+      icon: 'pi-users',
+      iconColor: 'orange',
+      title: 'Team Augmentation',
+      fragment: 'team',
+      description:
+        'When you need more capacity or specialized skills, we embed directly with your team — adopting your tools and delivering as one unified group.',
     },
   ];
 }

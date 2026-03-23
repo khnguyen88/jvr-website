@@ -64,54 +64,123 @@ export class WhyUsPage {
     },
   ];
 
-  doList = [
+  capabilities = [
     {
-      icon: 'pi-building',
-      color: 'blue',
-      title: 'Enterprise Applications',
-      desc: 'Internal business systems built to support complex organizational workflows and scale with your operations.',
-    },
-    {
-      icon: 'pi-server',
-      color: 'purple',
-      title: 'Backend Services & APIs',
-      desc: 'Server-side systems and REST APIs that power customer-facing platforms and internal integrations.',
+      icon: 'pi-code',
+      colorClass: 'blue',
+      fragment: 'full-stack',
+      title: 'Full-Stack Development',
+      description:
+        'We have built enrollment systems, employee scheduling platforms, and retail applications — front to back. Angular, React, and Vue on the front end; .NET / C# and Node.js on the back end. Complex, interconnected systems are our natural environment.',
     },
     {
       icon: 'pi-cloud',
-      color: 'orange',
-      title: 'Cloud Infrastructure',
-      desc: 'Azure and AWS architecture, migrations, and ongoing operations for enterprise workloads.',
-    },
-    {
-      icon: 'pi-code',
-      color: 'blue',
-      title: 'Full-Stack Development',
-      desc: 'Angular, React, Vue, .NET, and Node.js — built across the entire development stack.',
+      colorClass: 'purple',
+      fragment: 'cloud',
+      title: 'Cloud Architecture & Migration',
+      description:
+        'We have migrated payment platforms, analytics pipelines, and enterprise data systems to Azure and AWS. Our cloud work is not limited to infrastructure — we understand the data, the services, and the business logic that runs on top of it.',
     },
     {
       icon: 'pi-database',
-      color: 'purple',
+      colorClass: 'orange',
+      fragment: 'etl',
       title: 'ETL & Data Pipelines',
-      desc: 'Large-scale, reliable data movement for internal systems, reporting, and analytics workflows.',
+      description:
+        'We redesigned a pipeline running six hours and cut it to twenty minutes. We have built phased migrations running two systems in parallel with continuous reconciliation. Large-scale data movement, done reliably.',
     },
     {
       icon: 'pi-check-circle',
-      color: 'orange',
+      colorClass: 'blue',
+      fragment: 'testing',
       title: 'Automated Testing & QA',
-      desc: 'Playwright-based testing integrated directly into your deployment pipeline at every release.',
+      description:
+        'We have built automated UI and API test programs at multiple enterprise clients — integrated into CI/CD pipelines with custom tooling for tracking outcomes against documented test cases. We have also used AI to generate more thorough coverage in significantly less time.',
     },
     {
       icon: 'pi-microchip',
-      color: 'blue',
+      colorClass: 'purple',
+      fragment: 'ai',
       title: 'AI Workflow Integration',
-      desc: 'Practical AI adoption into your existing development and business processes — focused on real outcomes.',
+      description:
+        'We use AI as a guide and accelerator, not a shortcut. We have built orchestrations with Semantic Kernel and OpenAI, and use Claude as an active development partner — focused on real productivity gains, not trends.',
     },
     {
       icon: 'pi-users',
-      color: 'purple',
+      colorClass: 'orange',
+      fragment: 'team',
       title: 'Team Augmentation',
-      desc: 'Embedded consulting that integrates with your team rather than operating alongside it as a separate vendor.',
+      description:
+        'This is our most common engagement model. We adopt your tools, join your standups, and deliver as one unified group. The most consistent feedback we get? Clients say they are glad to have us on their team — not working for them, on their team.',
+    },
+  ];
+
+  miniCaseStudies = [
+    {
+      industry: 'Retail / Manufacturing',
+      colorClass: 'blue',
+      fragment: 'forecasting-pipeline',
+      stat: '6 hrs → 20 min',
+      statLabel: 'Pipeline Runtime',
+      challenge:
+        'A forecasting pipeline analysts could only run once or twice per day was bottlenecking business decisions.',
+      outcome:
+        'Runtime cut from six hours to twenty minutes — a full week of scenarios completable in a single day. Nearly 20% cost savings in year one.',
+    },
+    {
+      industry: 'Education',
+      colorClass: 'purple',
+      fragment: 'enrollment-rules-engine',
+      stat: '1 System',
+      statLabel: 'Every State. Every School.',
+      challenge:
+        'A charter school network needed one enrollment system that applied different state-specific acceptance rules per school.',
+      outcome:
+        'A configurable rules engine handled every state and school variation within a single workflow — no duplicate logic, no separate processes.',
+    },
+    {
+      industry: 'Retail',
+      colorClass: 'orange',
+      fragment: 'payment-cloud-migration',
+      stat: 'Zero',
+      statLabel: 'Service Disruption',
+      challenge:
+        'A major retailer needed to simultaneously switch payment providers and migrate analytics infrastructure from on-prem to Azure.',
+      outcome:
+        'Both initiatives coordinated in parallel and completed without interrupting live operations.',
+    },
+    {
+      industry: 'Enterprise',
+      colorClass: 'blue',
+      fragment: 'legacy-data-migration',
+      stat: 'Zero Loss',
+      statLabel: 'Live Data Integrity',
+      challenge:
+        'A large enterprise needed to migrate legacy data to a new cloud architecture while keeping both old and new systems live simultaneously.',
+      outcome:
+        'Continuous reconciliation pipelines ran alongside both systems throughout the migration window, automatically flagging discrepancies in real time.',
+    },
+    {
+      industry: 'Manufacturing · Energy · Retail',
+      colorClass: 'purple',
+      fragment: 'automated-testing',
+      stat: 'UI + API',
+      statLabel: 'Automated Coverage',
+      challenge:
+        'Multiple enterprise clients needed reliable, repeatable test coverage as deployment cadences increased and systems grew more complex.',
+      outcome:
+        'Playwright-based test suites integrated directly into CI/CD pipelines — with AI-assisted generation delivering broader coverage in significantly less time.',
+    },
+    {
+      industry: 'Energy / Utilities',
+      colorClass: 'orange',
+      fragment: 'workforce-scheduling',
+      stat: '3 Years',
+      statLabel: 'Embedded Partnership',
+      challenge:
+        'A regional energy utility needed a long-term development partner for their active field scheduling platform — not a rotating vendor.',
+      outcome:
+        'Full-stack feature development, an operational analytics tool, and an 80-page environment guide — eventually onboarding the client\'s own new engineers.',
     },
   ];
 }

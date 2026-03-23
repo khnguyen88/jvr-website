@@ -120,25 +120,70 @@
   </div>
 </section>
 
-<!-- ─── OUR SCOPE ─────────────────────────────────────────────── -->
-<section class="scope-section">
+<!-- ─── WHAT WE BRING ─────────────────────────────────────────── -->
+<section class="wwd-section">
   <div class="section-inner">
     <app-section-header
-      label="Our Focus"
-      sub="We concentrate on the areas where we consistently deliver strong results for our clients."
+      label="What We Bring"
+      sub="Not a list of things we have heard of — a record of where we have gone deep and delivered."
     >
-      What We Do
+      What We Bring to the Table
     </app-section-header>
 
-    <div class="grid scope-grid mt-5">
-      @for (item of doList; track item.title) {
-        <div class="col-12 sm:col-6 lg:col-3">
-          <div class="scope-tile">
-            <div [class]="'scope-icon accent-' + item.color">
-              <i [class]="'pi ' + item.icon"></i>
+    <div class="grid mt-5">
+      @for (cap of capabilities; track cap.title) {
+        <div class="col-12 md:col-6 lg:col-4">
+          <div class="card-light wwd-card">
+            <div [class]="'wwd-icon accent-' + cap.colorClass">
+              <i [class]="'pi ' + cap.icon"></i>
             </div>
-            <h4 class="scope-tile-title">{{ item.title }}</h4>
-            <p class="scope-tile-text">{{ item.desc }}</p>
+            <h3 class="wwd-title">{{ cap.title }}</h3>
+            <p class="wwd-desc">{{ cap.description }}</p>
+            <a [routerLink]="'/services'" [fragment]="cap.fragment" class="wwd-link">Learn more →</a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ─── RESULTS IN PRACTICE ───────────────────────────────────── -->
+<section class="results-section">
+  <div class="section-inner">
+    <app-section-header
+      label="Results in Practice"
+      [dark]="true"
+      sub="The approach works. Here is what it has produced for real clients."
+    >
+      Proof, Not Promises
+    </app-section-header>
+
+    <div class="grid mt-5">
+      @for (study of miniCaseStudies; track study.stat) {
+        <div class="col-12 md:col-4">
+          <div class="mini-study-card">
+
+            <div [class]="'mini-study-band mini-band-' + study.colorClass">
+              <div [class]="'mini-stat-value mini-stat-' + study.colorClass">{{ study.stat }}</div>
+              <div class="mini-stat-label">{{ study.statLabel }}</div>
+            </div>
+
+            <div class="mini-study-body">
+              <span [class]="'mini-industry mini-industry-' + study.colorClass">{{ study.industry }}</span>
+
+              <div class="mini-block">
+                <span class="mini-block-label">Challenge</span>
+                <p class="mini-block-text">{{ study.challenge }}</p>
+              </div>
+
+              <div class="mini-block">
+                <span class="mini-block-label">Outcome</span>
+                <p class="mini-block-text">{{ study.outcome }}</p>
+              </div>
+
+              <a [routerLink]="'/case-studies'" [fragment]="study.fragment" class="mini-study-link">Read the full story →</a>
+            </div>
+
           </div>
         </div>
       }

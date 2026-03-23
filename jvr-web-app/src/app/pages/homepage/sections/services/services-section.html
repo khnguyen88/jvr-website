@@ -16,7 +16,7 @@
             <div [class]="'svc-icon accent-' + service.iconColor"><i [class]="'pi ' + service.icon"></i></div>
             <h3 class="svc-title">{{ service.title }}</h3>
             <p class="svc-desc">{{ service.description }}</p>
-            <a routerLink="/services" class="svc-link">Learn more →</a>
+            <a [routerLink]="'/services'" [fragment]="service.fragment" class="svc-link">Learn more →</a>
           </p-card>
         </div>
       }

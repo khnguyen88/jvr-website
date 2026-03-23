@@ -13,29 +13,25 @@ export class ProcessSection {
       num: '01',
       colorClass: 's1',
       title: 'Discovery',
-      description:
-        'We meet with your stakeholders to understand your goals, constraints, and critical success factors — before any planning begins.',
+      description: 'We listen before we plan — defining goals and critical success factors directly with your stakeholders.',
     },
     {
       num: '02',
       colorClass: 's2',
       title: 'Planning',
-      description:
-        'We document requirements, review them with your team, and produce proof-of-concept code or mockups to validate the approach before production work begins.',
+      description: 'Requirements are documented and validated with proof-of-concept code before any production work begins.',
     },
     {
       num: '03',
       colorClass: 's3',
       title: 'Implementation',
-      description:
-        'Development is iterative and MVP-first. Working software is delivered early and often, with regular stakeholder reviews built into every cycle.',
+      description: 'Iterative, MVP-first development with working software delivered early and stakeholder reviews built in.',
     },
     {
       num: '04',
       colorClass: 's4',
       title: 'Delivery & QA',
-      description:
-        'We define a quality assurance process centered on customer acceptance, finalize the delivery, and include post-launch support to ensure a stable transition.',
+      description: 'Customer acceptance defines quality — with post-launch support included to ensure a stable transition.',
     },
   ];
 }
