@@ -73,9 +73,9 @@
   margin-bottom: 12px;
 }
 
-.industry-blue   { background: var(--light-2); color: var(--blue); }
-.industry-purple { background: #f3edff;         color: var(--purple); }
-.industry-orange { background: #fff4ec;         color: var(--orange); }
+.industry-blue   { background: var(--blue-tint);   color: var(--blue); }
+.industry-purple { background: var(--purple-tint); color: var(--purple); }
+.industry-orange { background: var(--orange-tint); color: var(--orange); }
 
 .study-title {
   font-size: 22px;
@@ -133,9 +133,9 @@
   border-left: 1px solid var(--border);
 }
 
-.stat-blue   { background: var(--light-2); }
-.stat-purple { background: #f3edff; }
-.stat-orange { background: #fff4ec; }
+.stat-blue   { background: var(--blue-tint); }
+.stat-purple { background: var(--purple-tint); }
+.stat-orange { background: var(--orange-tint); }
 
 .stat-value {
   font-family: 'Playfair Display', serif;
@@ -229,18 +229,13 @@
   font-style: normal;
 }
 
-/* ─── CTA ────────────────────────────────────────────────────── */
-.cs-cta-section {
-  background: linear-gradient(180deg, var(--bg-light-2) 0%, var(--bg-light) 100%);
-  padding: 88px 0;
-}
+/* ─── CTA → global .page-cta-light ──────────────────────────── */
 
 /* ─── RESPONSIVE ─────────────────────────────────────────────── */
 @media (max-width: 960px) {
   .studies-section,
   .industries-section,
-  .lesson-section,
-  .cs-cta-section { padding: 60px 0; }
+  .lesson-section { padding: 60px 0; }
 
   .study-card { grid-template-columns: 1fr; }
 

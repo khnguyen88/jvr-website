@@ -152,9 +152,9 @@
   margin-bottom: 4px;
 }
 
-.mini-stat-blue   { color: #60a5fa; }
-.mini-stat-purple { color: #a78bfa; }
-.mini-stat-orange { color: #fb923c; }
+.mini-stat-blue   { color: var(--blue-on-dark); }
+.mini-stat-purple { color: var(--purple-on-dark); }
+.mini-stat-orange { color: var(--orange-on-dark); }
 
 .mini-stat-label {
   font-size: 11px;
@@ -183,9 +183,9 @@
   margin-bottom: 16px;
 }
 
-.mini-industry-blue   { background: rgba(29,  111, 232, 0.2); color: #60a5fa; }
-.mini-industry-purple { background: rgba(124,  58, 237, 0.2); color: #a78bfa; }
-.mini-industry-orange { background: rgba(249, 115,  22, 0.2); color: #fb923c; }
+.mini-industry-blue   { background: rgba(29,  111, 232, 0.2); color: var(--blue-on-dark); }
+.mini-industry-purple { background: rgba(124,  58, 237, 0.2); color: var(--purple-on-dark); }
+.mini-industry-orange { background: rgba(249, 115,  22, 0.2); color: var(--orange-on-dark); }
 
 .mini-block { margin-bottom: 14px; }
 
@@ -209,13 +209,13 @@
 .mini-study-link {
   font-size: 13px;
   font-weight: 600;
-  color: #60a5fa;
+  color: var(--blue-on-dark);
   text-decoration: none;
   margin-top: auto;
   padding-top: 8px;
   transition: color 0.2s;
 }
-.mini-study-link:hover { color: #93c5fd; }
+.mini-study-link:hover { color: #fff; }
 
 /* ─── CTA → global .page-cta-section ────────────────────────── */
 

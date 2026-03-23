@@ -22,7 +22,7 @@
 
 .cta-heading em {
   font-style: normal;
-  background: linear-gradient(135deg, var(--blue), var(--purple));
+  background: var(--gradient-brand);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -37,7 +37,7 @@
 
 /* ── CTA gradient button — blue-purple fill ── */
 :host ::ng-deep .cta-btn-gradient {
-  background: linear-gradient(135deg, var(--blue), var(--purple)) !important;
+  background: var(--gradient-brand) !important;
   border-color: transparent !important;
   color: #fff !important;
   border-radius: 8px !important;
@@ -72,6 +72,37 @@
   transition: color 0.2s;
 }
 .cta-detail-link:hover { color: var(--blue); }
+
+/* ── Dark mode ─────────────────────────── */
+:host-context(body.dark-mode) .cta-section {
+  background: var(--gradient-hero-bg);
+  border-top-color: transparent;
+}
+
+/* Text — match page-cta-section style */
+:host-context(body.dark-mode) .section-label    { color: rgba(255, 255, 255, 0.7); }
+:host-context(body.dark-mode) .cta-heading      { color: #fff; }
+:host-context(body.dark-mode) .cta-heading em   { background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+:host-context(body.dark-mode) .cta-sub          { color: rgba(255, 255, 255, 0.68); }
+:host-context(body.dark-mode) .cta-details      { color: rgba(255, 255, 255, 0.45); }
+:host-context(body.dark-mode) .cta-detail-link  { color: rgba(255, 255, 255, 0.55); }
+:host-context(body.dark-mode) .cta-detail-link:hover { color: #fff; }
+
+/* Secondary link → matches global .btn-clear dark style */
+:host-context(body.dark-mode) .cta-link-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 28px;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-size: 15px;
+}
+:host-context(body.dark-mode) .cta-link-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
 
 @media (max-width: 768px) {
   .cta-section  { padding: 64px 20px; }

@@ -61,9 +61,9 @@
   padding: 4px 12px;
 }
 
-.stack-cat-blue   { color: #60a5fa; background: rgba(29,  111, 232, 0.15); }
-.stack-cat-purple { color: #a78bfa; background: rgba(124,  58, 237, 0.15); }
-.stack-cat-orange { color: #fb923c; background: rgba(249, 115,  22, 0.15); }
+.stack-cat-blue   { color: var(--blue-on-dark);   background: rgba(29,  111, 232, 0.15); }
+.stack-cat-purple { color: var(--purple-on-dark); background: rgba(124,  58, 237, 0.15); }
+.stack-cat-orange { color: var(--orange-on-dark); background: rgba(249, 115,  22, 0.15); }
 
 .stack-tag {
   font-size: 12px;

@@ -55,6 +55,15 @@
   margin: 0;
 }
 
+/* ── Dark mode ─────────────────────────── */
+:host-context(body.dark-mode) .process-section {
+  background: var(--bg-white);
+}
+:host-context(body.dark-mode) .step-card {
+  background: var(--bg-light);
+  border-color: var(--border);
+}
+
 @media (max-width: 768px) {
   .process-section { padding: 56px 0; }
 }

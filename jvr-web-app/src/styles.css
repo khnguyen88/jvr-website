@@ -47,6 +47,16 @@
   --bg-light: var(--light);
   --bg-light-2: var(--light-2);
   --bg-white: var(--white);
+
+  /* ── Tinted icon/badge backgrounds (light-mode base) ─────── */
+  --blue-tint:   var(--light-2);   /* adapts via --light-2 dark override */
+  --purple-tint: #f3edff;
+  --orange-tint: #fff4ec;
+
+  /* ── Vivid accent colours for permanently dark sections ───── */
+  --blue-on-dark:   #60a5fa;
+  --purple-on-dark: #a78bfa;
+  --orange-on-dark: #fb923c;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -230,24 +240,28 @@ h4 {
   color: var(--blue-dark);
 }
 
-/* Ghost on dark backgrounds */
-.btn-ghost-light {
+/* Ghost on dark backgrounds — also used as the dark-mode clear/outlined button style */
+.btn-ghost-light,
+.btn-clear {
   display: inline-flex;
   align-items: center;
   padding: 13px 28px;
   background: transparent;
-  color: rgba(255, 255, 255, 0.85);
+  color: #fff;
   font-size: 15px;
   font-weight: 600;
   border-radius: var(--radius-sm);
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
   text-decoration: none;
   transition:
     border-color 0.2s,
+    background 0.2s,
     color 0.2s;
 }
-.btn-ghost-light:hover {
+.btn-ghost-light:hover,
+.btn-clear:hover {
   border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
 
@@ -342,9 +356,9 @@ h4 {
    Tinted containers for icons / badges — pair with .icon-box
    or any sized element.
    ═══════════════════════════════════════════════════════════════ */
-.accent-blue   { background: var(--light-2); color: var(--blue); }
-.accent-purple { background: #f3edff;        color: var(--purple); }
-.accent-orange { background: #fff4ec;        color: var(--orange); }
+.accent-blue   { background: var(--blue-tint);   color: var(--blue); }
+.accent-purple { background: var(--purple-tint); color: var(--purple); }
+.accent-orange { background: var(--orange-tint); color: var(--orange); }
 
 /* ═══════════════════════════════════════════════════════════════
    DARK GRADIENT CTA SECTION
@@ -356,6 +370,25 @@ h4 {
 }
 .page-cta-section .section-title { color: #fff; }
 .page-cta-section .cta-sub       { color: rgba(255, 255, 255, 0.68); }
+
+/* Orange primary button inside any CTA section — matches homepage */
+.page-cta-section .btn-primary-cta,
+.page-cta-light   .btn-primary-cta {
+  background: var(--orange);
+  box-shadow: 0 0 14px rgba(249, 115, 22, 0.45);
+}
+.page-cta-section .btn-primary-cta:hover,
+.page-cta-light   .btn-primary-cta:hover {
+  background: var(--orange-deep);
+  box-shadow: 0 0 24px rgba(249, 115, 22, 0.7);
+  opacity: 1;
+}
+
+/* Light CTA section — subtle gradient on light-background pages */
+.page-cta-light {
+  background: linear-gradient(180deg, var(--bg-light-2) 0%, var(--bg-light) 100%);
+  padding: 88px 0;
+}
 
 /* ═══════════════════════════════════════════════════════════════
    PRIMENG BUTTON OVERRIDES
@@ -390,7 +423,8 @@ h4 {
   .page-hero {
     padding: 60px 0 52px;
   }
-  .page-cta-section { padding: 60px 0; }
+  .page-cta-section,
+  .page-cta-light   { padding: 60px 0; }
   .page-hero .hero-heading {
     font-size: 40px;
   }
@@ -450,6 +484,15 @@ body.dark-mode {
   --blue:      #5b9bf5;
   --blue-dark: #3a7fe8;
   --purple:    #9d6bff;
+
+  /* ── Tint backgrounds — semi-transparent for dark surfaces ── */
+  --blue-tint:   rgba(29,  111, 232, 0.18);
+  --purple-tint: rgba(124,  58, 237, 0.18);
+  --orange-tint: rgba(249, 115,  22, 0.18);
+
+  /* ── Gradients — full-saturation brand colours for dark mode ─ */
+  --gradient-brand:  linear-gradient(135deg, #1D6FE8 0%, #9333ea 100%);
+  --gradient-accent: linear-gradient(90deg,  #1D6FE8, #9333ea, #f97316);
 }
 
 /* ── Cards ─────────────────────────────────────────────────── */
@@ -461,18 +504,14 @@ body.dark-mode .card-light:hover {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* ── Accent icon boxes ─────────────────────────────────────── */
-body.dark-mode .accent-blue   { background: rgba(29,  111, 232, 0.18); color: #5b9bf5; }
-body.dark-mode .accent-purple { background: rgba(124,  58, 237, 0.18); color: #a78bfa; }
-body.dark-mode .accent-orange { background: rgba(249, 115,  22, 0.18); color: #fb923c; }
-
 /* ── Ghost button (on what is now a dark surface) ──────────── */
 body.dark-mode .btn-ghost-cta {
-  border-color: rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
 }
 body.dark-mode .btn-ghost-cta:hover {
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
 
@@ -523,6 +562,14 @@ body.dark-mode .context-note {
   background: rgba(255, 255, 255, 0.04);
   border-color: rgba(255, 255, 255, 0.08);
 }
+
+/* ── Light CTA sections → gradient on dark backgrounds ─────── */
+body.dark-mode .page-cta-light {
+  background: var(--gradient-hero-bg);
+}
+body.dark-mode .page-cta-light .section-title { color: #fff; }
+body.dark-mode .page-cta-light .section-sub,
+body.dark-mode .page-cta-light .cta-sub       { color: rgba(255, 255, 255, 0.68); }
 
 /* ── Contact page cards ─────────────────────────────────────── */
 body.dark-mode .form-card,

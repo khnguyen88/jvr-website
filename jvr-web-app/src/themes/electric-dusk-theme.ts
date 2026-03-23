@@ -77,7 +77,7 @@ export const electricDuskTheme = {
         surface: {
           0: '#0d1829',   // --bg-white (dark)
           50: '#111f35',  // --bg-light (dark)
-          100: '#1A2235',
+          100: '#152239',  // matches --bg-light-2 in dark mode
           200: '#16202E',
           300: '#121A28',
           400: '#0E1520',

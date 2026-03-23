@@ -50,5 +50,5 @@
 
 .footer-accent-bar {
   height: 3px;
-  background: linear-gradient(90deg, var(--blue), var(--purple), var(--orange));
+  background: var(--gradient-accent);
 }

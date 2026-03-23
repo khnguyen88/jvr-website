@@ -114,9 +114,9 @@
   margin-bottom: 16px;
 }
 
-.avatar-blue   { background: rgba(29, 111, 232, 0.2);  color: #60a5fa; border: 1px solid rgba(29, 111, 232, 0.35); }
-.avatar-purple { background: rgba(124, 58, 237, 0.2);  color: #a78bfa; border: 1px solid rgba(124, 58, 237, 0.35); }
-.avatar-orange { background: rgba(249, 115, 22, 0.2);  color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.35); }
+.avatar-blue   { background: rgba(29,  111, 232, 0.2); color: var(--blue-on-dark);   border: 1px solid rgba(29,  111, 232, 0.35); }
+.avatar-purple { background: rgba(124,  58, 237, 0.2); color: var(--purple-on-dark); border: 1px solid rgba(124,  58, 237, 0.35); }
+.avatar-orange { background: rgba(249, 115,  22, 0.2); color: var(--orange-on-dark); border: 1px solid rgba(249, 115,  22, 0.35); }
 
 .member-name { font-size: 20px; font-weight: 700; color: #fff; margin: 0 0 4px; }
 
@@ -186,20 +186,15 @@
   margin: 0;
 }
 
-/* ─── CTA ───────────────────────────────────────────────────── */
+/* ─── CTA → global .page-cta-light ─────────────────────────── */
 /* .btn-primary-cta and .btn-ghost-cta → global styles.css      */
-.about-cta-section {
-  background: linear-gradient(180deg, var(--bg-light-2) 0%, var(--bg-light) 100%);
-  padding: 88px 0;
-}
 
 /* ─── RESPONSIVE ────────────────────────────────────────────── */
 @media (max-width: 960px) {
   .story-section,
   .values-section,
   .team-section,
-  .community-section,
-  .about-cta-section { padding: 60px 0; }
+  .community-section { padding: 60px 0; }
 }
 
 @media (max-width: 768px) {

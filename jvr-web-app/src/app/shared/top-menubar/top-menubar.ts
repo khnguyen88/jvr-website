@@ -15,15 +15,10 @@ export class TopMenubar {
   readonly themeService = inject(ThemeService);
   items: MenuItem[] = [
     { label: 'Home', routerLink: '/home' },
-    { label: 'Services', routerLink: '/services' },
-    { label: 'Why Us', routerLink: '/why-us' },
     { label: 'About', routerLink: '/about' },
-    {
-      label: 'Resources',
-      items: [
-        { label: 'Case Studies', routerLink: '/case-studies' },
-      ],
-    },
+    { label: 'Why Us', routerLink: '/why-us' },
+    { label: 'Services', routerLink: '/services' },
+    { label: 'Case Studies', routerLink: '/case-studies' },
     { label: 'Contact', routerLink: '/contact' },
     { label: 'Get Started', routerLink: '/contact', styleClass: 'mobile-cta-item' },
   ];
