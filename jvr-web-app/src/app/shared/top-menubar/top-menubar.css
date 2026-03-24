@@ -1,3 +1,15 @@
+:host {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+:host-context(body.dark-mode) {
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+}
+
 :host ::ng-deep .p-menubar,
 :host ::ng-deep .p-menubar .p-menubar-inner {
   border-radius: 0;
