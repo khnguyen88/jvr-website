@@ -49,12 +49,16 @@
 }
 
 .timeline-year {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--blue);
   letter-spacing: 0.06em;
   margin-bottom: 5px;
   text-align: center;
+  display: inline-block;
+  transform: scale(0.846);
+  transform-origin: center top;
+  transition: transform 0.25s ease-out, text-shadow 0.25s, color 0.25s;
 }
 
 .timeline-dot {
@@ -66,6 +70,7 @@
   box-shadow: 0 0 0 2px var(--blue);
   flex-shrink: 0;
   z-index: 1;
+  transition: transform 0.25s ease-out, background 0.25s, box-shadow 0.25s;
 }
 
 .timeline-line {
@@ -85,6 +90,27 @@
   color: var(--text-mid);
   line-height: 1.75;
   margin: 0;
+  transition: text-shadow 0.25s, color 0.25s;
+}
+
+/* ── Timeline item hover ───────────────────────────────────── */
+.timeline-item:hover .timeline-year {
+  transform: scale(1);
+  color: var(--purple);
+  text-shadow: 0 0 0.6px var(--purple);
+}
+
+:host-context(body.dark-mode) .timeline-item:hover .timeline-content p {
+  color: #ffffff;
+  text-shadow: 0 0 0.5px #ffffff;
+}
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.25);
+  background: var(--purple);
+  box-shadow: 0 0 0 2px var(--purple);
+}
+.timeline-item:hover .timeline-content p {
+  text-shadow: 0 0 0.5px currentColor;
 }
 
 /* ─── VALUES ─────────────────────────────────────────────────── */
@@ -203,5 +229,5 @@
 
 @media (max-width: 480px) {
   .timeline-marker { min-width: 60px; }
-  .timeline-year   { font-size: 10px; }
+  .timeline-year   { font-size: 12px; transform: scale(0.833); }
 }
