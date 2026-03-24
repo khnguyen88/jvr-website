@@ -54,6 +54,12 @@
   color: #fff;
   letter-spacing: 0.01em;
   margin-bottom: 8px;
+  display: inline-block;
+  transition: transform 0.25s ease-out;
+  cursor: default;
+}
+.wordmark:hover {
+  transform: scale(1.06) translateY(-4px);
 }
 
 /* "Enterprises" — bright accent gradient for contrast on dark bg */

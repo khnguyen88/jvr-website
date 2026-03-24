@@ -40,8 +40,13 @@
   font-weight: 800;
   color: var(--text);
   letter-spacing: 0.01em;
-  display: block;
+  display: inline-block;
   margin-bottom: 4px;
+  transition: transform 0.25s ease-out;
+  cursor: default;
+}
+.hero-wordmark:hover {
+  transform: scale(1.06) translateY(-4px);
 }
 
 .hero-wordmark-accent {
@@ -76,6 +81,20 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: inline-block;
+  cursor: default;
+}
+.hero-heading em:hover {
+  animation: hero-em-jiggle 0.5s ease-in-out forwards;
+}
+
+@keyframes hero-em-jiggle {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(-1.5deg); }
+  45%  { transform: rotate(1.5deg); }
+  65%  { transform: rotate(-0.8deg); }
+  82%  { transform: rotate(0.6deg); }
+  100% { transform: rotate(0deg); }
 }
 
 /* Sub */
