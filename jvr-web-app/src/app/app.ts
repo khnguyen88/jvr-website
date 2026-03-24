@@ -1,9 +1,10 @@
-import { Component, computed, inject } from '@angular/core';
+import { afterNextRender, Component, computed, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map } from 'rxjs';
 import { TopMenubar } from './shared/top-menubar/top-menubar';
 import { Footer } from './shared/footer/footer';
+import { SmoothScrollService } from './services/smooth-scroll.service';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ import { Footer } from './shared/footer/footer';
 })
 export class App {
   private router = inject(Router);
+  private smoothScroll = inject(SmoothScrollService);
 
   private url = toSignal(
     this.router.events.pipe(
@@ -23,4 +25,14 @@ export class App {
   );
 
   readonly showShell = computed(() => this.url() !== '/');
+
+  constructor() {
+    afterNextRender(() => {
+      this.smoothScroll.init();
+
+      this.router.events
+        .pipe(filter(e => e instanceof NavigationEnd))
+        .subscribe(() => this.smoothScroll.scrollToTop());
+    });
+  }
 }
