@@ -3,11 +3,24 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+:host::after {
+  content: '';
+  display: block;
+  height: 3.5px;
+  background: var(--gradient-accent);
+  box-shadow: 0 4px 12px rgba(29, 111, 232, 0.18), 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+:host-context(body.dark-mode)::after {
+  height: 3px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
 }
 
 :host-context(body.dark-mode) {
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 
 :host ::ng-deep .p-menubar,
