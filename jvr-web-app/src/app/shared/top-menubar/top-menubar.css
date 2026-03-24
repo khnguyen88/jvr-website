@@ -282,8 +282,8 @@
 }
 
 /* Prevent p-focus (set by PrimeNG JS on mouse hover) from keeping hover styles after cursor leaves.
-   Exclude active-route items so their purple background is never cleared. */
-:host ::ng-deep .p-menubar-item.p-focus:not(:hover):not(:has(.p-menubar-item-link-active)) > .p-menubar-item-content {
+   Exclude active-route items and the mobile CTA so their backgrounds are never cleared. */
+:host ::ng-deep .p-menubar-item.p-focus:not(:hover):not(:has(.p-menubar-item-link-active)):not(.mobile-cta-item) > .p-menubar-item-content {
   background: transparent !important;
   color: inherit !important;
 }

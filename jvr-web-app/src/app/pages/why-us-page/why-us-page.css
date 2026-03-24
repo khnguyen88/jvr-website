@@ -18,6 +18,11 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 28px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.mode-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .mode-label {
@@ -55,7 +60,14 @@
   padding: 80px 0;
 }
 
-.process-card { height: 100%; padding: 8px 0; }
+.process-card {
+  height: 100%;
+  padding: 8px 0;
+  transition: transform 0.2s;
+}
+.process-card:hover {
+  transform: translateY(-3px);
+}
 
 .step-num {
   width: 52px;

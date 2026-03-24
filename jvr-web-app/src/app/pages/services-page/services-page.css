@@ -49,6 +49,11 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
   height: 100%;
+  transition: background 0.2s, transform 0.2s;
+}
+.stack-group:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-3px);
 }
 
 .stack-cat-label {
