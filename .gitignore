@@ -2,8 +2,9 @@
 /private/
 /environment/
 
-# Claude / AI skills — downloaded files, regenerate with: npx skills add angular/skills
-# Keep: skills-lock.json (version tracking)
+CLAUDE.md
+
+# Claude / AI skills — reinstall with: npx skills add angular/skills --yes
 .agents/
 .claude/
-CLAUDE.md
+skills-lock.json
