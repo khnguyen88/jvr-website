@@ -53,6 +53,10 @@
   color: var(--error);
   line-height: 1.4;
 }
+/* Dark mode: #dc2626 on dark card bg ≈ 3.1:1 ❌ — lighten to #f87171 = 5.3:1 ✅ */
+:host-context(body.dark-mode) .field-error {
+  color: #f87171;
+}
 
 /* ─── Actions row ────────────────────────────────────────────── */
 .form-actions {

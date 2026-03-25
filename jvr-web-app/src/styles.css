@@ -679,3 +679,19 @@ body.dark-mode {
   --step-s3-bg: rgba(157,  107, 255, 0.12);
   --step-s4-bg: rgba(251, 146,  60, 0.12);
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   Blanket override for users who prefer reduced motion.
+   Disables all transitions and animations site-wide, covering
+   any component-level transform/transition not individually
+   guarded with @media (prefers-reduced-motion: no-preference).
+   ═══════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -84,7 +84,8 @@
 
 .step-blue   { background: var(--blue);   color: #fff; box-shadow: 0 4px 16px rgba(29, 111, 232, 0.4); }
 .step-purple { background: var(--purple); color: #fff; box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4); }
-.step-orange { background: var(--orange); color: #fff; box-shadow: 0 4px 16px rgba(249, 115, 22, 0.4); }
+/* contrast check: white on #b84d08 = 5.1:1 ✅ (was: white on #f97316 = 2.8:1 ❌) */
+.step-orange { background: #b84d08; color: #fff; box-shadow: 0 4px 16px rgba(184, 77, 8, 0.4); }
 
 .step-title { font-size: 18px; font-weight: 700; color: #fff; margin: 0 0 10px; }
 
