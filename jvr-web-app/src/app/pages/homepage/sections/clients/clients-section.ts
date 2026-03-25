@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-clients-section',
   imports: [],
   templateUrl: './clients-section.html',
   styleUrl: './clients-section.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClientsSection {
   clients = [

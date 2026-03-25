@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ContactForm } from '../../shared/contact-form/contact-form';
 
 @Component({
@@ -6,5 +6,6 @@ import { ContactForm } from '../../shared/contact-form/contact-form';
   imports: [ContactForm],
   templateUrl: './contact-page.html',
   styleUrl: './contact-page.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactPage {}

@@ -1,24 +1,14 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-section-header',
-  standalone: true,
   templateUrl: './section-header.html',
   styleUrl: './section-header.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SectionHeader {
-  /** Small uppercase tag above the heading */
-  @Input() label = '';
-
-  /** Body copy below the heading (plain text) */
-  @Input() sub = '';
-
-  /** Text alignment for the block */
-  @Input() align: 'center' | 'left' = 'center';
-
-  /**
-   * Set true when placed on a dark background — switches
-   * heading and sub to light text colours automatically.
-   */
-  @Input() dark = false;
+  label = input('');
+  sub = input('');
+  align = input<'center' | 'left'>('center');
+  dark = input(false);
 }

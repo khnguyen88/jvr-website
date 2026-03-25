@@ -1,9 +1,7 @@
 import { Routes } from '@angular/router';
 
-import { LandingPage } from './pages/landing-page/landing-page';
-
 export const routes: Routes = [
-  { path: '', component: LandingPage },
+  { path: '', loadComponent: () => import('./pages/landing-page/landing-page').then(m => m.LandingPage) },
   { path: 'home',         loadComponent: () => import('./pages/homepage/homepage').then(m => m.Homepage) },
   { path: 'services',     loadComponent: () => import('./pages/services-page/services-page').then(m => m.ServicesPage) },
   { path: 'why-us',       loadComponent: () => import('./pages/why-us-page/why-us-page').then(m => m.WhyUsPage) },

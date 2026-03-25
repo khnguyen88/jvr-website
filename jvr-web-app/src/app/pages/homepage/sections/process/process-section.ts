@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { SectionHeader } from '../../../../shared/section-header/section-header';
 
 @Component({
@@ -6,6 +6,7 @@ import { SectionHeader } from '../../../../shared/section-header/section-header'
   imports: [SectionHeader],
   templateUrl: './process-section.html',
   styleUrl: './process-section.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProcessSection {
   steps = [

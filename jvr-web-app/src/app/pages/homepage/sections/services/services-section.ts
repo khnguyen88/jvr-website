@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { SectionHeader } from '../../../../shared/section-header/section-header';
@@ -8,6 +8,7 @@ import { SectionHeader } from '../../../../shared/section-header/section-header'
   imports: [RouterLink, CardModule, SectionHeader],
   templateUrl: './services-section.html',
   styleUrl: './services-section.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ServicesSection {
   services = [

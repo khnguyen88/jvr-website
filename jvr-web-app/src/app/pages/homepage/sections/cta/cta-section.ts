@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 
@@ -7,5 +7,6 @@ import { ButtonModule } from 'primeng/button';
   imports: [RouterModule, ButtonModule],
   templateUrl: './cta-section.html',
   styleUrl: './cta-section.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CtaSection {}

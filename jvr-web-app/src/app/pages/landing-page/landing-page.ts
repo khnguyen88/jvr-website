@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -6,5 +6,6 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LandingPage {}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { HeroSection } from './sections/hero/hero-section';
 import { ServicesSection } from './sections/services/services-section';
 import { WhyJvrSection } from './sections/why-jvr/why-jvr-section';
@@ -10,5 +10,6 @@ import { CtaSection } from './sections/cta/cta-section';
   imports: [HeroSection, ServicesSection, WhyJvrSection, ProcessSection, CtaSection],
   templateUrl: './homepage.html',
   styleUrl: './homepage.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Homepage {}

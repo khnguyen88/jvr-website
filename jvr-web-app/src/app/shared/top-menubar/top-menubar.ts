@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
@@ -10,10 +10,11 @@ import { ThemeService } from '../../services/theme.service';
   imports: [MenubarModule, ButtonModule, RouterModule],
   templateUrl: './top-menubar.html',
   styleUrl: './top-menubar.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopMenubar {
   readonly themeService = inject(ThemeService);
-  items: MenuItem[] = [
+  readonly items: MenuItem[] = [
     { label: 'Home', routerLink: '/home' },
     { label: 'About', routerLink: '/about' },
     { label: 'Why Us', routerLink: '/why-us' },

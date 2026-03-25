@@ -1,12 +1,11 @@
-import { Injectable, NgZone, OnDestroy } from '@angular/core';
+import { inject, Injectable, NgZone, OnDestroy } from '@angular/core';
 import Lenis from 'lenis';
 
 @Injectable({ providedIn: 'root' })
 export class SmoothScrollService implements OnDestroy {
   private lenis: Lenis | null = null;
   private rafId: number | null = null;
-
-  constructor(private ngZone: NgZone) {}
+  private ngZone = inject(NgZone);
 
   init(): void {
     this.ngZone.runOutsideAngular(() => {

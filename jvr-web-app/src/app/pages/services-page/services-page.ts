@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SectionHeader } from '../../shared/section-header/section-header';
 
@@ -7,6 +7,7 @@ import { SectionHeader } from '../../shared/section-header/section-header';
   imports: [RouterLink, SectionHeader],
   templateUrl: './services-page.html',
   styleUrl: './services-page.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ServicesPage {
   capabilities = [
