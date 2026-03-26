@@ -1,0 +1,11 @@
+# Sensitive / private — never commit these
+/private/
+/environment/
+.accessibility-audit/
+
+CLAUDE.md
+
+# Claude / AI skills — reinstall with: npx skills add angular/skills --yes
+.agents/
+.claude/
+skills-lock.json
