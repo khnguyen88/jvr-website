@@ -436,10 +436,14 @@ body.dark-mode .section-label {
   height: 100%;
   transition:
     background 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s,
     transform 0.2s;
 }
 .card-dark:hover {
   background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(29, 111, 232, 0.4);
+  box-shadow: 0 0 0 1px rgba(29, 111, 232, 0.25), 0 12px 40px rgba(29, 111, 232, 0.3), 0 4px 16px rgba(124, 58, 237, 0.15);
   transform: translateY(-3px);
 }
 

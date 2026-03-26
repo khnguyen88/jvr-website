@@ -77,11 +77,11 @@ export class AboutUs {
     },
     {
       name: 'Mike Wardman',
-      bio2: '',
       role: 'Senior Consultant — AWS & QA Automation',
       initials: 'MW',
       colorClass: 'purple',
-      bio: 'Mike joined JvR in 2014 and has been a steady, reliable part of the team ever since. He co-led the build of Applications & Enrollment for National Heritage Academies\' Student Information System, and has since become our go-to for AWS infrastructure and Playwright-based test automation. Outside of work, he volunteers his time as a live-streaming technician for roller derby competitions.',
+      bio: 'Mike joined JvR in 2014 and has been a steady, reliable part of the team ever since. He co-led the build of Applications & Enrollment for National Heritage Academies\' Student Information System, and has since become our go-to for AWS infrastructure and Playwright-based test automation.',
+      bio2: 'Outside the office, he moonlights as a Dungeon Master running tabletop RPG campaigns, volunteers as a live-streaming technician for roller derby competitions, and runs his own home servers — always tinkering with the next interesting technology.',
       tags: ['AWS', 'Playwright', 'Test Automation', 'Node.js'],
     },
     {
@@ -90,7 +90,7 @@ export class AboutUs {
       initials: 'KN',
       colorClass: 'orange',
       bio: 'Khiem came to software after a decade as a licensed Professional Engineer — a background that shows in how he approaches complex systems. He holds a Master\'s in Applied Computer Science from Grand Valley State University and has been with JvR since 2022, collaborating with senior developers at Consumers Energy on Angular UI components and .NET API development for a large employee scheduling platform.',
-      bio2: 'Outside of client work, he designed and built a personal IoT gardening system — combining an AI-powered backend using Semantic Kernel, a real-time Angular dashboard, and multi-cloud integration.',
+      bio2: 'Outside work, he tends a garden monitored by a personal IoT system he built himself, and enjoys cooking, leatherwork, pottery, and woodworking.',
       tags: ['Angular', 'TypeScript / JavaScript', '.NET / C#', 'AI / Semantic Kernel'],
     },
   ];
