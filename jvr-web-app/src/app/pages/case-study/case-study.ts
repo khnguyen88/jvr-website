@@ -1,5 +1,4 @@
-import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SectionHeader } from '../../shared/section-header/section-header';
 
@@ -11,8 +10,6 @@ import { SectionHeader } from '../../shared/section-header/section-header';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CaseStudy {
-  private doc = inject(DOCUMENT);
-
   selectedIndustries = signal<string[]>([]);
 
   filteredStudies = computed(() => {
@@ -29,11 +26,14 @@ export class CaseStudy {
         ? current.filter(i => i !== label)
         : [...current, label]
     );
-    this.doc.getElementById('studies-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   isSelected(label: string): boolean {
     return this.selectedIndustries().includes(label);
+  }
+
+  clearFilter() {
+    this.selectedIndustries.set([]);
   }
 
   caseStudies = [

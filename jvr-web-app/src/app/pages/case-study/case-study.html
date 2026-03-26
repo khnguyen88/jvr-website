@@ -12,20 +12,6 @@
   </div>
 </section>
 
-<!-- ─── CONTEXT NOTE ──────────────────────────────────────────── -->
-<section class="context-section">
-  <div class="section-inner">
-    <div class="context-note">
-      <i class="pi pi-info-circle context-icon" aria-hidden="true"></i>
-      <p>
-        Client names and logos are not currently published at this time. Projects below are
-        described by industry and challenge type. We are actively working on formal case study
-        approvals with current clients.
-      </p>
-    </div>
-  </div>
-</section>
-
 <!-- ─── INDUSTRIES SERVED ─────────────────────────────────────── -->
 <section class="industries-section">
   <div class="section-inner">
@@ -53,15 +39,55 @@
   </div>
 </section>
 
+<!-- ─── CONTEXT NOTE ──────────────────────────────────────────── -->
+<section class="context-section">
+  <div class="section-inner">
+    <div class="context-note">
+      <i class="pi pi-info-circle context-icon" aria-hidden="true"></i>
+      <p>
+        Client names and logos are not currently published at this time. Projects below are
+        described by industry and challenge type. We are actively working on formal case study
+        approvals with current clients.
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- ─── CASE STUDIES ──────────────────────────────────────────── -->
 <section class="studies-section" id="studies-section">
   <div class="section-inner">
-    <app-section-header
-      label="Selected Work"
-      sub="Each project is different. What they share is a clear challenge, a deliberate solution, and a concrete outcome."
-    >
-      Work We're Proud Of
-    </app-section-header>
+    <div class="studies-header-row">
+      <app-section-header
+        label="Selected Work"
+        sub="Each project is different. What they share is a clear challenge, a deliberate solution, and a concrete outcome."
+      >
+        Work We're Proud Of
+      </app-section-header>
+
+      <div class="filter-icon-row" role="group" aria-label="Filter by industry">
+        @for (ind of industries; track ind.label) {
+          <button
+            type="button"
+            [class]="'filter-icon-btn chip-' + ind.colorClass + (isSelected(ind.label) ? ' active' : '')"
+            [attr.aria-pressed]="isSelected(ind.label)"
+            [title]="ind.label"
+            (click)="toggleIndustry(ind.label)"
+          >
+            <i [class]="'pi ' + ind.icon" aria-hidden="true"></i>
+          </button>
+        }
+        @if (selectedIndustries().length > 0) {
+          <button
+            type="button"
+            class="filter-icon-btn filter-icon-clear"
+            title="Clear filter"
+            (click)="clearFilter()"
+          >
+            <i class="pi pi-filter-slash" aria-hidden="true"></i>
+          </button>
+        }
+      </div>
+    </div>
 
     <div class="studies-list mt-5">
       @if (filteredStudies().length === 0) {
