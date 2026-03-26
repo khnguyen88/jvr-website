@@ -88,15 +88,6 @@
   .hero-heading em:hover { animation: hero-em-jiggle 0.5s ease-in-out forwards; }
 }
 
-@keyframes hero-em-jiggle {
-  0%   { transform: rotate(0deg); }
-  20%  { transform: rotate(-1.5deg); }
-  45%  { transform: rotate(1.5deg); }
-  65%  { transform: rotate(-0.8deg); }
-  82%  { transform: rotate(0.6deg); }
-  100% { transform: rotate(0deg); }
-}
-
 /* Sub */
 .hero-sub {
   font-size: 17px;
@@ -105,22 +96,6 @@
   max-width: 520px;
   margin: 0 0 36px;
 }
-
-.btn-secondary {
-  color: var(--blue);
-  font-weight: 600;
-  font-size: 15px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: color 0.2s;
-}
-
-.btn-secondary:hover { color: var(--purple); }
-
-.arrow { transition: transform 0.2s; }
-.btn-secondary:hover .arrow { transform: translateX(4px); }
 
 /* Stat cards */
 .stat-card {

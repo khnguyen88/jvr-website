@@ -47,23 +47,6 @@
   padding-right: 0;
 }
 
-@keyframes icon-spin {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes icon-bounce {
-  0%   { transform: scale(1); }
-  40%  { transform: scale(0.88); }
-  70%  { transform: scale(1.12); }
-  100% { transform: scale(1); }
-}
-
-@keyframes nav-nudge-right {
-  0%   { transform: translateX(0); }
-  50%  { transform: translateX(6px); }
-  100% { transform: translateX(0); }
-}
 
 @media (min-width: 961px) {
   :host ::ng-deep .p-menubar-root-list {

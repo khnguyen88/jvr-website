@@ -168,7 +168,7 @@
             (onClick)="clearForm()"
             severity="secondary"
             size="large"
-            [disabled]="!formTouched()"
+            [disabled]="!formTouched() && !formDirty()"
             aria-label="Clear form"
           />
         </div>

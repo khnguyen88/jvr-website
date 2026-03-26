@@ -123,6 +123,12 @@ export class ContactForm implements OnInit {
     { label: 'Billing', value: 'billing' },
   ];
 
+  // ── Whether any field has a non-empty value ───────────────────
+  readonly formDirty = computed(() => {
+    const m = this.contactFormModel();
+    return !!(m.firstName || m.lastName || m.email || m.phone || m.inquiryType || m.message);
+  });
+
   // ── Whether the form has been touched at all ──────────────────
   readonly formTouched = computed(
     () =>

@@ -245,7 +245,34 @@ body.dark-mode .section-label {
    SHARED BUTTONS
    ═══════════════════════════════════════════════════════════════ */
 
+/* Navbar animations */
+@keyframes icon-spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes icon-bounce {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.88); }
+  70%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+@keyframes nav-nudge-right {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(6px); }
+  100% { transform: translateX(0); }
+}
+
 /* CTA button animations */
+@keyframes hero-em-jiggle {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(-1.5deg); }
+  45%  { transform: rotate(1.5deg); }
+  65%  { transform: rotate(-0.8deg); }
+  82%  { transform: rotate(0.6deg); }
+  100% { transform: rotate(0deg); }
+}
 @keyframes cta-wiggle {
   0%   { transform: scale(1)    rotate(0deg); }
   15%  { transform: scale(1.04) rotate(-1.2deg); }
