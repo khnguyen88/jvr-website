@@ -675,7 +675,7 @@ body.dark-mode {
   /* ── Text ─────────────────────────────────────────────────── */
   --text: #eef2ff;
   --text-mid: #b8c7e0;
-  --text-light: #7a92b0;
+  --text-light: #8099b8; /* bumped from #7a92b0 — passes WCAG AA (4.5:1) on card composites */
 
   /* ── Borders & shadows ────────────────────────────────────── */
   --border: rgba(255, 255, 255, 0.1);

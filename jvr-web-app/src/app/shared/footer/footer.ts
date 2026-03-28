@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { SmoothScrollService } from '../../services/smooth-scroll.service';
+import { ScrollStateService } from '../../services/scroll-state.service';
 
 @Component({
   selector: 'app-footer',
@@ -10,5 +11,9 @@ import { SmoothScrollService } from '../../services/smooth-scroll.service';
 })
 export class Footer {
   readonly smoothScroll = inject(SmoothScrollService);
+  readonly scrollState = inject(ScrollStateService);
   year = new Date().getFullYear();
+
+  /** True when a content section (not the hero) is the active section. */
+  readonly sectionActive = computed(() => this.scrollState.activeSection() !== 'hero');
 }

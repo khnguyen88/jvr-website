@@ -3,6 +3,13 @@
   background: var(--bg-light-2);
   border-top: 1px solid var(--border);
   padding: 48px 40px 32px;
+  transition: background-color 0.75s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Matches .mega-section--active background */
+.site-footer.footer--section-active {
+  background: var(--bg-white);
 }
 
 .footer-inner {
@@ -130,9 +137,16 @@
 }
 
 /* ── Dark mode ────────────────────────────────────────────── */
+/* Default: matches inactive mega-section bg */
 body.dark-mode .site-footer {
-  background: var(--blue-deep);
+  background: var(--bg-white);
   border-top-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Active: matches mega-section--active bg */
+body.dark-mode .site-footer.footer--section-active {
+  background: rgba(29, 111, 232, 0.09);
+  border-top-color: rgba(29, 111, 232, 0.15);
 }
 
 body.dark-mode .footer-grid {
