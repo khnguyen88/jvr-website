@@ -40,8 +40,12 @@ export class MegaPage {
     if (divider) {
       const rect = divider.getBoundingClientRect();
       const navHeight = 57;
-      const inView = rect.top >= navHeight && rect.top < window.innerHeight * 0.75;
-      if (!inView) {
+      // Only skip scroll if the divider is already sitting just below the nav
+      // (within 100px). On mobile the old `* 0.75` threshold was too wide —
+      // the divider could be mid-screen while the carousel was also visible,
+      // so the scroll never fired.
+      const alreadyFramed = rect.top >= navHeight && rect.top <= navHeight + 100;
+      if (!alreadyFramed) {
         this.smoothScroll.scrollTo('what-we-do-divider');
       }
     }
@@ -78,9 +82,16 @@ export class MegaPage {
 
   toggleIndustryAndScroll(label: string): void {
     this.toggleIndustry(label);
-    setTimeout(() => {
-      this.doc.getElementById('studies-list')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 0);
+
+    const divider = this.doc.getElementById('studies-divider');
+    if (divider) {
+      const rect = divider.getBoundingClientRect();
+      const navHeight = 57;
+      const alreadyFramed = rect.top >= navHeight && rect.top <= navHeight + 100;
+      if (!alreadyFramed) {
+        this.smoothScroll.scrollTo('studies-divider');
+      }
+    }
   }
 
   isSelected(label: string): boolean {
