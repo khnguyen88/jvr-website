@@ -592,99 +592,133 @@ body.dark-mode .mega-section.mega-section--active {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   SERVICES — EXPANDABLE CARDS
+   SERVICES — TAB CAROUSEL + CARD DISPLAY
    ══════════════════════════════════════════════════════════════ */
 
-.cap-card {
-  transition:
-    box-shadow 0.2s,
-    transform 0.2s;
-  cursor: pointer;
-  height: auto;
-}
-
-.cap-card--expanded {
-  box-shadow: var(--shadow-card-hover);
-}
-
-.cap-summary {
+/* Desktop: all buttons visible, centered */
+.cap-tab-carousel {
   display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  width: 100%;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  text-align: left;
-  font-family: 'DM Sans', sans-serif;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 6px 4px 18px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cap-tab-carousel::-webkit-scrollbar { display: none; }
+
+/* Mobile / small tablet: show ~3 buttons with fade edges */
+@media (max-width: 768px) {
+  .cap-tab-carousel {
+    justify-content: flex-start;
+    max-width: 420px;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0px,
+      black 40px,
+      black calc(100% - 40px),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0px,
+      black 40px,
+      black calc(100% - 40px),
+      transparent 100%
+    );
+  }
 }
 
-.cap-summary:focus-visible {
-  outline: 2px solid var(--blue);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
-}
-
-.cap-summary-text {
-  flex: 1;
-  min-width: 0;
-}
-
-.cap-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text);
-  margin: 0 0 6px;
-}
-
-.cap-preview {
-  font-size: 13px;
-  color: var(--text-light);
-  line-height: 1.65;
-  margin: 0;
-}
-
-.cap-chevron {
-  font-size: 14px;
-  color: var(--text-light);
-  margin-top: 4px;
+.cap-tab-btn {
   flex-shrink: 0;
-  transition: color 0.2s;
-}
-.cap-summary:hover .cap-chevron {
-  color: var(--blue);
-}
-
-.cap-detail {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
-  animation: cap-expand 0.2s ease-out;
-}
-
-@keyframes cap-expand {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.cap-full-desc {
-  font-size: 14px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  padding: 14px 12px 12px;
+  width: 104px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--border);
+  background: var(--bg-white);
   color: var(--text-mid);
-  line-height: 1.75;
-  margin: 0 0 12px;
+  font-size: 11.5px;
+  font-weight: 500;
+  font-family: inherit;
+  line-height: 1.35;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.cap-tab-btn .pi {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.cap-tab-btn:hover {
+  border-color: var(--text-light);
+  color: var(--text);
+}
+
+/* Active — solid fill per color class, matching industry chip pattern */
+.cap-tab-btn--active.cap-tab-btn--blue {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff; /* intentional: white on colored bg */
+}
+.cap-tab-btn--active.cap-tab-btn--purple {
+  background: var(--purple);
+  border-color: var(--purple);
+  color: #fff; /* intentional: white on colored bg */
+}
+.cap-tab-btn--active.cap-tab-btn--orange {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff; /* intentional: white on colored bg */
+}
+.cap-tab-btn--active .pi {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* CSS grid stacking — all cards share one cell, transitions handle show/hide */
+.cap-panel {
+  display: grid;
+  justify-items: center;
+}
+
+.cap-card-display {
+  grid-area: 1 / 1;
+  width: 100%;
+  max-width: 800px;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.cap-card-display--visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  visibility: visible;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0s;
+}
+
+.cap-card-desc {
+  flex: 1;
+  margin: 0 0 14px;
 }
 
 .cap-best-for {
   font-size: 13px;
-  color: var(--text-light);
-  margin: 0 0 0;
+  color: var(--text-mid);
+  line-height: 1.6;
+  margin: 0 0 4px;
+  padding: 10px 14px;
+  background: var(--bg-light-2);
+  border-left: 3px solid var(--blue);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
 /* ══════════════════════════════════════════════════════════════

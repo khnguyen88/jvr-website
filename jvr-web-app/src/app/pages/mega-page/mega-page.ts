@@ -4,9 +4,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  ElementRef,
   inject,
   NgZone,
   signal,
+  viewChild,
 } from '@angular/core';
 import { SectionHeader } from '../../shared/section-header/section-header';
 import { ContactForm } from '../../shared/contact-form/contact-form';
@@ -26,19 +28,35 @@ export class MegaPage {
   readonly scrollState = inject(ScrollStateService);
   readonly smoothScroll = inject(SmoothScrollService);
 
-  // ── Expandable services cards ─────────────────────────────────────
-  private expandedCards = signal(new Set<string>());
+  // ── Services tab carousel ─────────────────────────────────────────
+  selectedCapability = signal(0);
+  private capCarouselEl = viewChild<ElementRef<HTMLElement>>('capCarousel');
 
-  isExpanded(id: string): boolean {
-    return this.expandedCards().has(id);
+  selectCapability(i: number): void {
+    this.selectedCapability.set(i);
+
+    // Scroll to the divider that opens the "What We Do" subsection if not in view
+    const divider = this.doc.getElementById('what-we-do-divider');
+    if (divider) {
+      const rect = divider.getBoundingClientRect();
+      const navHeight = 57;
+      const inView = rect.top >= navHeight && rect.top < window.innerHeight * 0.75;
+      if (!inView) {
+        this.smoothScroll.scrollTo('what-we-do-divider');
+      }
+    }
+
+    this.centerActiveButton('smooth');
   }
 
-  toggleCard(id: string): void {
-    this.expandedCards.update(prev => {
-      const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
-      return next;
-    });
+  private centerActiveButton(behavior: ScrollBehavior = 'smooth'): void {
+    const carousel = this.capCarouselEl()?.nativeElement;
+    if (!carousel) return;
+    const i = this.selectedCapability();
+    const btn = carousel.children[i] as HTMLElement;
+    if (!btn) return;
+    const scrollLeft = btn.offsetLeft + btn.offsetWidth / 2 - carousel.offsetWidth / 2;
+    carousel.scrollTo({ left: Math.max(0, scrollLeft), behavior });
   }
 
   // ── Case studies filter ───────────────────────────────────────────
@@ -105,6 +123,13 @@ export class MegaPage {
           const el = this.doc.getElementById(id);
           if (el) sectionObs.observe(el);
         });
+
+        // Re-center active carousel button when carousel width changes (viewport resize)
+        const carousel = this.capCarouselEl()?.nativeElement;
+        if (carousel) {
+          const ro = new ResizeObserver(() => this.centerActiveButton('instant'));
+          ro.observe(carousel);
+        }
       });
     });
   }

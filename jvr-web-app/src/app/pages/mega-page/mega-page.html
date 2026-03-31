@@ -322,58 +322,50 @@
     </div>
   </div>
 
-  <hr class="divider-sub" />
+  <hr class="divider-sub" id="what-we-do-divider" />
 
-  <!-- ── What We Do (expandable cards) ─────────────────────────── -->
-  <div class="subsection">
+  <!-- ── What We Do (tab carousel) ─────────────────────────────── -->
+  <div class="subsection" id="what-we-do">
     <div class="section-inner">
       <app-section-header
         label="What We Do"
-        sub="Six areas where we consistently bring depth — not just familiarity. Click any card to learn more."
+        sub="Six areas where we consistently bring depth — not just familiarity."
       >
         Our Core Capabilities
       </app-section-header>
 
-      <div class="grid mt-5">
-        @for (cap of capabilities; track cap.id) {
-          <div class="col-12 md:col-6">
-            <div
-              class="cap-card card-light"
-              [id]="cap.id"
-              [class.cap-card--expanded]="isExpanded(cap.id)"
-            >
-              <button
-                type="button"
-                class="cap-summary"
-                [attr.aria-expanded]="isExpanded(cap.id)"
-                [attr.aria-controls]="'cap-detail-' + cap.id"
-                (click)="toggleCard(cap.id)"
-              >
-                <div [class]="'icon-box icon-box-md accent-' + cap.colorClass" aria-hidden="true">
-                  <i [class]="'pi ' + cap.icon"></i>
-                </div>
-                <div class="cap-summary-text">
-                  <h3 class="cap-title">{{ cap.title }}</h3>
-                  <p class="cap-preview">{{ cap.preview }}</p>
-                </div>
-                <i
-                  [class]="
-                    'pi cap-chevron ' + (isExpanded(cap.id) ? 'pi-chevron-up' : 'pi-chevron-down')
-                  "
-                  aria-hidden="true"
-                ></i>
-              </button>
+      <!-- Tab carousel -->
+      <div class="cap-tab-carousel mt-5" role="tablist" aria-label="Capabilities" #capCarousel>
+        @for (cap of capabilities; track cap.id; let i = $index) {
+          <button
+            [class]="'cap-tab-btn cap-tab-btn--' + cap.colorClass + (selectedCapability() === i ? ' cap-tab-btn--active' : '')"
+            role="tab"
+            [attr.aria-selected]="selectedCapability() === i"
+            (click)="selectCapability(i)"
+          >
+            <i [class]="'pi ' + cap.icon" aria-hidden="true"></i>
+            {{ cap.title }}
+          </button>
+        }
+      </div>
 
-              @if (isExpanded(cap.id)) {
-                <div class="cap-detail" [id]="'cap-detail-' + cap.id">
-                  <p class="cap-full-desc">{{ cap.description }}</p>
-                  <p class="cap-best-for"><strong>Best for:</strong> {{ cap.bestFor }}</p>
-                  <div class="flex flex-wrap gap-2 mt-3">
-                    @for (tag of cap.tags; track tag) {
-                      <span class="tech-tag">{{ tag }}</span>
-                    }
-                  </div>
-                </div>
+      <!-- Card panel -->
+      <div class="cap-panel mt-4" role="tabpanel">
+        @for (cap of capabilities; track cap.id; let i = $index) {
+          <div
+            class="cap-card-display card-light"
+            [class.cap-card-display--visible]="selectedCapability() === i"
+            [attr.aria-hidden]="selectedCapability() !== i"
+          >
+            <div [class]="'icon-box icon-box-md accent-' + cap.colorClass" aria-hidden="true">
+              <i [class]="'pi ' + cap.icon"></i>
+            </div>
+            <h3 class="card-title">{{ cap.title }}</h3>
+            <p class="card-desc cap-card-desc">{{ cap.description }}</p>
+            <p class="cap-best-for"><strong>Best for:</strong> {{ cap.bestFor }}</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              @for (tag of cap.tags; track tag) {
+                <span class="tech-tag">{{ tag }}</span>
               }
             </div>
           </div>
