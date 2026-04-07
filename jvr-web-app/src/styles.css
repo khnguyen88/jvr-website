@@ -611,8 +611,7 @@ body.dark-mode .section-label {
   box-shadow:
     0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
       rgba(0, 0, 0, 0.4),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
-      rgba(29, 111, 232, 0.08);
+    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(29, 111, 232, 0.08);
   transform: translateY(-3px);
 }
 
@@ -875,8 +874,7 @@ body.dark-mode .card-light:hover {
   box-shadow:
     0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
       rgba(0, 0, 0, 0.4),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
-      rgba(29, 111, 232, 0.08);
+    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(29, 111, 232, 0.08);
 }
 
 /* ── Ghost button (on what is now a dark surface) ──────────── */

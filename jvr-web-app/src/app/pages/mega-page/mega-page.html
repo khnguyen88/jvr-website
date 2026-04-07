@@ -490,7 +490,7 @@
 
   <hr class="divider-sub" />
 
-  <!-- ── Industries Served ──────────────────────────────────────── -->
+  <!-- ── Industries Served / Case Study Cards ────────────────────── -->
   <div class="subsection">
     <div class="section-inner">
       <app-section-header
@@ -500,37 +500,11 @@
         Where We Have Worked
       </app-section-header>
 
-      <div class="industries-row flex flex-wrap justify-content-center gap-3 mt-5">
-        @for (ind of caseStudyIndustries; track ind.label) {
-          <button
-            type="button"
-            [class]="
-              'industry-chip chip-' + ind.colorClass + (isSelected(ind.label) ? ' active' : '')
-            "
-            [attr.aria-pressed]="isSelected(ind.label)"
-            (click)="toggleIndustryAndScroll(ind.label)"
-          >
-            <i [class]="'pi ' + ind.icon + ' industry-chip-icon'" aria-hidden="true"></i>
-            <span>{{ ind.label }}</span>
-          </button>
-        }
-      </div>
-    </div>
-  </div>
-
-  <hr class="divider-sub" id="studies-divider" />
-
-  <!-- ── Case Study Cards ───────────────────────────────────────── -->
-  <div class="subsection" id="studies-list">
-    <div class="section-inner">
-      <app-section-header
-        label="Selected Work"
-        sub="Each project is different. What they share is a clear challenge, a deliberate solution, and a concrete outcome."
+      <div
+        class="filter-icon-row flex flex-wrap justify-content-center gap-3"
+        role="group"
+        aria-label="Filter by industry"
       >
-        Selected Case Studies
-      </app-section-header>
-
-      <div class="filter-icon-row" role="group" aria-label="Filter by industry">
         @for (ind of caseStudyIndustries; track ind.label) {
           <button
             type="button"
@@ -542,6 +516,7 @@
             (click)="toggleIndustry(ind.label)"
           >
             <i [class]="'pi ' + ind.icon" aria-hidden="true"></i>
+            <span class="filter-label">{{ ind.label }}</span>
           </button>
         }
         @if (selectedIndustries().length > 0) {
@@ -549,9 +524,10 @@
             type="button"
             class="filter-icon-btn filter-icon-clear"
             title="Clear filter"
-            (click)="clearFilter()"
+            (click)="clearFilterNoScroll()"
           >
             <i class="pi pi-filter-slash" aria-hidden="true"></i>
+            <span class="filter-label">Clear</span>
           </button>
         }
       </div>

@@ -76,7 +76,7 @@ export class MegaPage {
 
   toggleIndustry(label: string): void {
     this.selectedIndustries.update(current =>
-      current.includes(label) ? current.filter(i => i !== label) : [...current, label]
+      current.includes(label) ? [] : [label]
     );
   }
 
@@ -100,6 +100,15 @@ export class MegaPage {
 
   clearFilter(): void {
     this.selectedIndustries.set([]);
+  }
+
+  clearFilterNoScroll(): void {
+    const scrollY = window.scrollY;
+    this.selectedIndustries.set([]);
+    // Restore scroll position after DOM update
+    requestAnimationFrame(() => {
+      window.scrollTo(0, scrollY);
+    });
   }
 
   // ── IntersectionObserver setup ────────────────────────────────────
