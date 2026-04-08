@@ -233,7 +233,7 @@
       <div class="grid mt-5">
         @for (scenario of scenarios; track scenario.title) {
           <div class="col-12 md:col-4">
-            <div class="card-light card-hover">
+            <div class="card-light">
               <div
                 [class]="'icon-box icon-box-md accent-' + scenario.colorClass"
                 aria-hidden="true"
@@ -424,7 +424,7 @@
       <div class="grid mt-5">
         @for (model of engagementModels; track model.title) {
           <div class="col-12 md:col-4">
-            <div class="card-light engage-card card-hover">
+            <div class="card-light engage-card">
               <div [class]="'icon-box icon-box-md accent-' + model.colorClass" aria-hidden="true">
                 <i [class]="'pi ' + model.icon"></i>
               </div>
@@ -710,7 +710,7 @@
       <div class="grid mt-5">
         @for (value of values; track value.title) {
           <div class="col-12 md:col-4">
-            <div class="card-light card-hover">
+            <div class="card-light">
               <div [class]="'icon-box icon-box-md accent-' + value.colorClass" aria-hidden="true">
                 <i [class]="'pi ' + value.icon"></i>
               </div>
@@ -738,7 +738,7 @@
       <div class="grid mt-5">
         @for (member of team; track member.name) {
           <div class="col-12 md:col-4">
-            <div class="card-light member-card card-hover">
+            <div class="card-light member-card">
               <div [class]="'member-avatar avatar-' + member.colorClass">{{ member.initials }}</div>
               <h3 class="member-name">{{ member.name }}</h3>
               <p class="member-role">{{ member.role }}</p>

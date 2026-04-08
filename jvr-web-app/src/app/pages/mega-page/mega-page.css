@@ -427,10 +427,6 @@ body.dark-mode .info-tag {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 24px;
-  transition:
-    background 0.2s,
-    border-color 0.2s;
-  box-shadow: var(--shadow-card);
 }
 
 .mode-label {
@@ -464,7 +460,6 @@ body.dark-mode .info-tag {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   height: 100%;
-  box-shadow: var(--shadow-card);
 }
 
 .step-num {
@@ -522,7 +517,6 @@ body.dark-mode .info-tag {
   border: 1px solid var(--border);
   background: var(--bg-white);
   height: 100%;
-  box-shadow: var(--shadow-card);
 }
 .mini-study-band {
   padding: 20px 24px;
@@ -793,7 +787,6 @@ body.dark-mode .info-tag {
   border-radius: var(--radius-lg);
   padding: 24px;
   height: 100%;
-  box-shadow: var(--shadow-card);
 }
 
 .stack-cat-label {
@@ -1918,6 +1911,7 @@ body.dark-mode .inline-link {
   background: var(--bg-white);
   border: var(--card-border-width) solid var(--border);
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
   transition:
     background var(--card-transition-duration) var(--card-transition-easing),
     border-color var(--card-transition-duration) var(--card-transition-easing),
@@ -1956,6 +1950,7 @@ body.dark-mode .card-hover:hover {
   background: var(--bg-white);
   border: var(--card-border-width) solid var(--border);
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
   transition:
     background var(--card-transition-duration) var(--card-transition-easing),
     border-color var(--card-transition-duration) var(--card-transition-easing),
@@ -1994,6 +1989,7 @@ body.dark-mode .card-hover-purple:hover {
   background: var(--bg-white);
   border: var(--card-border-width) solid var(--border);
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
   transition:
     background var(--card-transition-duration) var(--card-transition-easing),
     border-color var(--card-transition-duration) var(--card-transition-easing),
