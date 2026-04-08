@@ -176,8 +176,8 @@
   --card-shadow-hover-spread: -4px;
   --card-shadow-hover-opacity: 0.12;
   --card-shadow-accent-y: 4px;
-  --card-shadow-accent-blur: 16px;
-  --card-shadow-accent-opacity: 0.06;
+  --card-shadow-accent-blur: 20px;
+  --card-shadow-accent-opacity: 0.12;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -567,6 +567,20 @@ body.dark-mode .section-label {
    Use these base classes in HTML; add component-specific classes
    alongside them for any personalised overrides.
    ═══════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════
+   SHARED CARD TRANSITION CLASS
+   Apply to any card that should have smooth hover animations
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Base transition class — handles smooth state changes */
+.card-hover {
+  transition:
+    background 0.3s var(--card-transition-easing),
+    border-color 0.3s var(--card-transition-easing),
+    box-shadow 0.6s var(--card-transition-easing),
+    transform 0.3s var(--card-transition-easing);
+}
 
 /* Light card — for light / light-2 section backgrounds */
 .card-light {

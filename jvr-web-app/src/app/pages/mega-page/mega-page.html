@@ -80,7 +80,7 @@
             @for (feature of whyFeatures; track feature.title) {
               <div class="feature-item flex gap-3">
                 <div [class]="'feature-dot dot-' + feature.dotColor"></div>
-                <div>
+                <div class="feature-card card-hover">
                   <h3 class="feature-title">{{ feature.title }}</h3>
                   <p class="feature-desc">{{ feature.description }}</p>
                 </div>
@@ -162,7 +162,7 @@
 
         <div class="col-12 lg:col-7 pl-0 lg:pl-6 mt-4 lg:mt-0">
           <div class="engage-modes flex flex-column gap-4">
-            <div class="mode-card">
+            <div class="mode-card card-hover">
               <div class="mode-label accent-blue">Integration Approach</div>
               <h3 class="mode-title">Working Within Your Team</h3>
               <p class="mode-desc">
@@ -171,7 +171,7 @@
                 contribute as a natural extension of your existing group.
               </p>
             </div>
-            <div class="mode-card">
+            <div class="mode-card card-hover">
               <div class="mode-label accent-purple">Full Ownership Approach</div>
               <h3 class="mode-title">Owning the Full Process</h3>
               <p class="mode-desc">
@@ -201,7 +201,7 @@
       <div class="grid mt-5">
         @for (step of processSteps; track step.num) {
           <div class="col-12 md:col-6 lg:col-3">
-            <div class="process-card">
+            <div class="process-card card-hover">
               <div [class]="'step-num step-' + step.colorClass">{{ step.num }}</div>
               <h3 class="step-title">{{ step.title }}</h3>
               <p class="step-desc">{{ step.description }}</p>
@@ -233,7 +233,7 @@
       <div class="grid mt-5">
         @for (scenario of scenarios; track scenario.title) {
           <div class="col-12 md:col-4">
-            <div class="card-light">
+            <div class="card-light card-hover">
               <div
                 [class]="'icon-box icon-box-md accent-' + scenario.colorClass"
                 aria-hidden="true"
@@ -264,7 +264,7 @@
       <div class="grid mt-5">
         @for (study of miniCaseStudies; track study.stat) {
           <div class="col-12 md:col-4">
-            <div [class]="'mini-study-card mini-study-card-' + study.colorClass">
+            <div [class]="'mini-study-card mini-study-card-' + study.colorClass" class="card-hover">
               <div [class]="'mini-study-band mini-band-' + study.colorClass">
                 <div [class]="'mini-stat-value mini-stat-' + study.colorClass">
                   {{ study.stat }}
@@ -393,7 +393,7 @@
       <div class="grid mt-5">
         @for (group of techStack; track group.category) {
           <div class="col-12 sm:col-6 lg:col-4">
-            <div class="stack-group">
+            <div class="stack-group card-hover">
               <span [class]="'stack-cat-label stack-cat-' + group.colorClass">{{
                 group.category
               }}</span>
@@ -424,7 +424,7 @@
       <div class="grid mt-5">
         @for (model of engagementModels; track model.title) {
           <div class="col-12 md:col-4">
-            <div class="card-light engage-card">
+            <div class="card-light engage-card card-hover">
               <div [class]="'icon-box icon-box-md accent-' + model.colorClass" aria-hidden="true">
                 <i [class]="'pi ' + model.icon"></i>
               </div>
@@ -710,7 +710,7 @@
       <div class="grid mt-5">
         @for (value of values; track value.title) {
           <div class="col-12 md:col-4">
-            <div class="card-light">
+            <div class="card-light card-hover">
               <div [class]="'icon-box icon-box-md accent-' + value.colorClass" aria-hidden="true">
                 <i [class]="'pi ' + value.icon"></i>
               </div>
@@ -738,7 +738,7 @@
       <div class="grid mt-5">
         @for (member of team; track member.name) {
           <div class="col-12 md:col-4">
-            <div class="card-light member-card">
+            <div class="card-light member-card card-hover">
               <div [class]="'member-avatar avatar-' + member.colorClass">{{ member.initials }}</div>
               <h3 class="member-name">{{ member.name }}</h3>
               <p class="member-role">{{ member.role }}</p>
