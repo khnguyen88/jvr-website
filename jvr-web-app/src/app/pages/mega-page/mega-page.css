@@ -1972,26 +1972,11 @@ body.dark-mode .card-hover:hover {
 .feature-card {
   background: var(--bg-white);
 }
-.feature-card:hover {
-  border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(13, 30, 61, var(--card-shadow-hover-opacity)),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
-      rgba(29, 111, 232, var(--card-shadow-accent-opacity));
-  transform: translateY(-3px);
-}
+
 body.dark-mode .feature-card {
   background: rgba(255, 255, 255, 0.05);
 }
-body.dark-mode .feature-card:hover {
-  border-color: rgba(91, 155, 245, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(0, 0, 0, 0.5),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(91, 155, 245, 0.25);
-  transform: translateY(-3px);
-}
+
 
 /* Process cards */
 .process-card:hover {
