@@ -430,6 +430,7 @@ body.dark-mode .info-tag {
   transition:
     background 0.2s,
     border-color 0.2s;
+  box-shadow: var(--shadow-card);
 }
 
 .mode-label {
@@ -463,6 +464,7 @@ body.dark-mode .info-tag {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   height: 100%;
+  box-shadow: var(--shadow-card);
 }
 
 .step-num {
@@ -520,6 +522,7 @@ body.dark-mode .info-tag {
   border: 1px solid var(--border);
   background: var(--bg-white);
   height: 100%;
+  box-shadow: var(--shadow-card);
 }
 .mini-study-band {
   padding: 20px 24px;
@@ -790,6 +793,7 @@ body.dark-mode .info-tag {
   border-radius: var(--radius-lg);
   padding: 24px;
   height: 100%;
+  box-shadow: var(--shadow-card);
 }
 
 .stack-cat-label {
@@ -1198,6 +1202,7 @@ body.dark-mode .info-tag {
   border: var(--card-border-width) solid var(--border);
   border-radius: var(--radius-xl);
   overflow: hidden;
+  box-shadow: var(--shadow-card);
   transition:
     background var(--card-transition-duration) var(--card-transition-easing),
     border-color var(--card-transition-duration) var(--card-transition-easing),
@@ -1752,40 +1757,11 @@ body.dark-mode .step-orange {
   box-shadow: 0 4px 16px rgba(194, 87, 12, 0.5);
 }
 
-/* Mini case study cards (Why Us — Results) */
+/* Mini case study cards - base dark mode styling */
 body.dark-mode .mini-study-card {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.08);
-  box-shadow: none;
-  transition:
-    background var(--card-transition-duration) var(--card-transition-easing),
-    border-color var(--card-transition-duration) var(--card-transition-easing),
-    border-width var(--card-transition-duration) var(--card-transition-easing),
-    box-shadow var(--card-transition-duration) var(--card-transition-easing);
-}
-body.dark-mode .mini-study-card:hover {
-  background: rgba(255, 255, 255, 0.07);
-}
-body.dark-mode .mini-study-card-blue:hover {
-  border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(0, 0, 0, 0.4),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(29, 111, 232, 0.12);
-}
-body.dark-mode .mini-study-card-purple:hover {
-  border-color: rgba(124, 58, 237, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(0, 0, 0, 0.4),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(124, 58, 237, 0.12);
-}
-body.dark-mode .mini-study-card-orange:hover {
-  border-color: rgba(249, 115, 22, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(0, 0, 0, 0.4),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(249, 115, 22, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.09);
+  box-shadow: var(--shadow-card);
 }
 
 /* CRITICAL: Band backgrounds need explicit dark tints, stat/industry colors need explicit light variants */
@@ -1852,6 +1828,9 @@ body.dark-mode .study-block-label {
 body.dark-mode .industry-blue {
   color: var(--blue-on-dark);
 }
+body.dark-mode .study-card {
+  box-shadow: var(--shadow-card);
+}
 body.dark-mode .study-alt {
   background: rgba(255, 255, 255, 0.03);
 }
@@ -1869,6 +1848,7 @@ body.dark-mode .study-card:hover {
 /* Services - Capabilities cards (cap-card-display) */
 body.dark-mode .cap-card-display {
   background: rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow-card);
 }
 body.dark-mode .cap-card-display--visible:hover {
   border-color: rgba(91, 155, 245, var(--card-border-opacity-hover));
@@ -1929,21 +1909,22 @@ body.dark-mode .inline-link {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   SHARED CARD HOVER TRANSITIONS
-   Apply .card-hover class to any card for consistent smooth animations
+   CONSOLIDATED CARD HOVER SYSTEM
+   3 reusable card classes with hover animations
    ══════════════════════════════════════════════════════════════ */
 
-/* Base card-hover class with smooth transitions */
+/* Base card with blue hover (default) - covers most cards */
 .card-hover {
   background: var(--bg-white);
+  border: var(--card-border-width) solid var(--border);
+  border-radius: var(--radius-lg);
   transition:
-    background 0.3s cubic-bezier(0.25, 1, 0.5, 1),
-    border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1),
-    box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1),
-    transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    background var(--card-transition-duration) var(--card-transition-easing),
+    border-color var(--card-transition-duration) var(--card-transition-easing),
+    box-shadow var(--card-transition-duration) var(--card-transition-easing),
+    transform var(--card-transition-duration) var(--card-transition-easing);
 }
 
-/* Light mode hover — subtle blue glow with lift */
 .card-hover:hover {
   border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
   box-shadow:
@@ -1954,10 +1935,13 @@ body.dark-mode .inline-link {
   transform: translateY(-3px);
 }
 
-/* Dark mode hover — brighter blue glow with lift */
+/* Dark mode - card-hover */
 body.dark-mode .card-hover {
+  background: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.09);
+  box-shadow: var(--shadow-card);
 }
+
 body.dark-mode .card-hover:hover {
   border-color: rgba(91, 155, 245, var(--card-border-opacity-hover));
   box-shadow:
@@ -1967,72 +1951,19 @@ body.dark-mode .card-hover:hover {
   transform: translateY(-3px);
 }
 
-/* Specialized card hover overrides */
-/* Feature cards */
-.feature-card {
+/* Card with purple hover accent */
+.card-hover-purple {
   background: var(--bg-white);
+  border: var(--card-border-width) solid var(--border);
+  border-radius: var(--radius-lg);
+  transition:
+    background var(--card-transition-duration) var(--card-transition-easing),
+    border-color var(--card-transition-duration) var(--card-transition-easing),
+    box-shadow var(--card-transition-duration) var(--card-transition-easing),
+    transform var(--card-transition-duration) var(--card-transition-easing);
 }
 
-body.dark-mode .feature-card {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-
-/* Process cards */
-.process-card:hover {
-  border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(13, 30, 61, var(--card-shadow-hover-opacity)),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
-      rgba(29, 111, 232, var(--card-shadow-accent-opacity));
-  transform: translateY(-3px);
-}
-body.dark-mode .process-card {
-  background: rgba(255, 255, 255, 0.05);
-}
-body.dark-mode .process-card:hover {
-  border-color: rgba(91, 155, 245, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(0, 0, 0, 0.5),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(91, 155, 245, 0.25);
-  transform: translateY(-3px);
-}
-
-/* Mode cards */
-.mode-card:hover {
-  border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(13, 30, 61, var(--card-shadow-hover-opacity)),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
-      rgba(29, 111, 232, var(--card-shadow-accent-opacity));
-  transform: translateY(-3px);
-}
-body.dark-mode .mode-card {
-  background: rgba(255, 255, 255, 0.05);
-}
-body.dark-mode .mode-card:hover {
-  border-color: rgba(91, 155, 245, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(0, 0, 0, 0.5),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(91, 155, 245, 0.25);
-  transform: translateY(-3px);
-}
-
-/* Mini case study cards - color-specific hover */
-.mini-study-card-blue:hover {
-  border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(13, 30, 61, var(--card-shadow-hover-opacity)),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
-      rgba(29, 111, 232, var(--card-shadow-accent-opacity));
-  transform: translateY(-3px);
-}
-.mini-study-card-purple:hover {
+.card-hover-purple:hover {
   border-color: rgba(124, 58, 237, var(--card-border-opacity-hover));
   box-shadow:
     0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
@@ -2041,7 +1972,36 @@ body.dark-mode .mode-card:hover {
       rgba(124, 58, 237, var(--card-shadow-accent-opacity));
   transform: translateY(-3px);
 }
-.mini-study-card-orange:hover {
+
+/* Dark mode - card-hover-purple */
+body.dark-mode .card-hover-purple {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.09);
+  box-shadow: var(--shadow-card);
+}
+
+body.dark-mode .card-hover-purple:hover {
+  border-color: rgba(157, 107, 255, var(--card-border-opacity-hover));
+  box-shadow:
+    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
+      rgba(0, 0, 0, 0.5),
+    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(157, 107, 255, 0.25);
+  transform: translateY(-3px);
+}
+
+/* Card with orange hover accent */
+.card-hover-orange {
+  background: var(--bg-white);
+  border: var(--card-border-width) solid var(--border);
+  border-radius: var(--radius-lg);
+  transition:
+    background var(--card-transition-duration) var(--card-transition-easing),
+    border-color var(--card-transition-duration) var(--card-transition-easing),
+    box-shadow var(--card-transition-duration) var(--card-transition-easing),
+    transform var(--card-transition-duration) var(--card-transition-easing);
+}
+
+.card-hover-orange:hover {
   border-color: rgba(249, 115, 22, var(--card-border-opacity-hover));
   box-shadow:
     0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
@@ -2051,122 +2011,19 @@ body.dark-mode .mode-card:hover {
   transform: translateY(-3px);
 }
 
-body.dark-mode .mini-study-card {
+/* Dark mode - card-hover-orange */
+body.dark-mode .card-hover-orange {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.09);
-  box-shadow: none;
+  box-shadow: var(--shadow-card);
 }
-body.dark-mode .mini-study-card-blue:hover {
-  border-color: rgba(91, 155, 245, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(0, 0, 0, 0.5),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(91, 155, 245, 0.25);
-  transform: translateY(-3px);
-}
-body.dark-mode .mini-study-card-purple:hover {
-  border-color: rgba(157, 107, 255, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(0, 0, 0, 0.5),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(157, 107, 255, 0.25);
-  transform: translateY(-3px);
-}
-body.dark-mode .mini-study-card-orange:hover {
+
+body.dark-mode .card-hover-orange:hover {
   border-color: rgba(251, 146, 60, var(--card-border-opacity-hover));
   box-shadow:
     0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
       rgba(0, 0, 0, 0.5),
     0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(251, 146, 60, 0.25);
-  transform: translateY(-3px);
-}
-
-/* Tech stack cards */
-.stack-group:hover {
-  border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(13, 30, 61, var(--card-shadow-hover-opacity)),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
-      rgba(29, 111, 232, var(--card-shadow-accent-opacity));
-  transform: translateY(-3px);
-}
-body.dark-mode .stack-group {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.09);
-}
-body.dark-mode .stack-group:hover {
-  border-color: rgba(91, 155, 245, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(0, 0, 0, 0.5),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(91, 155, 245, 0.25);
-  transform: translateY(-3px);
-}
-
-/* Engagement cards */
-.engage-card:hover {
-  border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(13, 30, 61, var(--card-shadow-hover-opacity)),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
-      rgba(29, 111, 232, var(--card-shadow-accent-opacity));
-  transform: translateY(-3px);
-}
-body.dark-mode .engage-card {
-  background: rgba(255, 255, 255, 0.05);
-}
-body.dark-mode .engage-card:hover {
-  border-color: rgba(91, 155, 245, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(0, 0, 0, 0.5),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(91, 155, 245, 0.25);
-  transform: translateY(-3px);
-}
-
-/* Value cards */
-.card-light:hover {
-  border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(13, 30, 61, var(--card-shadow-hover-opacity)),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
-      rgba(29, 111, 232, var(--card-shadow-accent-opacity));
-  transform: translateY(-3px);
-}
-body.dark-mode .card-light {
-  background: rgba(255, 255, 255, 0.05);
-}
-body.dark-mode .card-light:hover {
-  border-color: rgba(91, 155, 245, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(0, 0, 0, 0.5),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(91, 155, 245, 0.25);
-  transform: translateY(-3px);
-}
-
-/* Member cards */
-.member-card:hover {
-  border-color: rgba(29, 111, 232, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(13, 30, 61, var(--card-shadow-hover-opacity)),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0
-      rgba(29, 111, 232, var(--card-shadow-accent-opacity));
-  transform: translateY(-3px);
-}
-body.dark-mode .member-card {
-  background: rgba(255, 255, 255, 0.05);
-}
-body.dark-mode .member-card:hover {
-  border-color: rgba(91, 155, 245, var(--card-border-opacity-hover));
-  box-shadow:
-    0 var(--card-shadow-hover-y) var(--card-shadow-hover-blur) var(--card-shadow-hover-spread)
-      rgba(0, 0, 0, 0.5),
-    0 var(--card-shadow-accent-y) var(--card-shadow-accent-blur) 0 rgba(91, 155, 245, 0.25);
   transform: translateY(-3px);
 }
 

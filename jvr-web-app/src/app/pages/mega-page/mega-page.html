@@ -264,7 +264,7 @@
       <div class="grid mt-5">
         @for (study of miniCaseStudies; track study.stat) {
           <div class="col-12 md:col-4">
-            <div [class]="'mini-study-card mini-study-card-' + study.colorClass" class="card-hover">
+            <div [class]="'mini-study-card mini-study-card-' + study.colorClass + ' ' + (study.colorClass === 'blue' ? 'card-hover' : 'card-hover-' + study.colorClass)">
               <div [class]="'mini-study-band mini-band-' + study.colorClass">
                 <div [class]="'mini-stat-value mini-stat-' + study.colorClass">
                   {{ study.stat }}
