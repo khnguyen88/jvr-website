@@ -30,20 +30,22 @@ import { ScrollStateService } from '../../services/scroll-state.service';
   },
 })
 export class TopMenubar implements AfterViewInit, OnDestroy {
-  readonly themeService  = inject(ThemeService);
-  readonly scrollState   = inject(ScrollStateService);
-  readonly smoothScroll  = inject(SmoothScrollService);
+  readonly themeService = inject(ThemeService);
+  readonly scrollState = inject(ScrollStateService);
+  readonly smoothScroll = inject(SmoothScrollService);
   private readonly ngZone = inject(NgZone);
-  private readonly cdr    = inject(ChangeDetectorRef);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   // ── Existing carousel refs ─────────────────────────────────────────────────
   private carouselContainer = viewChild<ElementRef<HTMLDivElement>>('carouselContainer');
-  private carouselButtons   = viewChildren<ElementRef<HTMLButtonElement>>('carouselBtn');
+  private carouselButtons = viewChildren<ElementRef<HTMLButtonElement>>('carouselBtn');
 
   // ── Centered carousel refs ─────────────────────────────────────────────────
-  private centeredCarouselContainer = viewChild<ElementRef<HTMLDivElement>>('centeredCarouselContainer');
-  private centeredTrackRef           = viewChild<ElementRef<HTMLDivElement>>('centeredTrack');
-  private centeredBtns               = viewChildren<ElementRef<HTMLButtonElement>>('centeredBtn');
+  private centeredCarouselContainer = viewChild<ElementRef<HTMLDivElement>>(
+    'centeredCarouselContainer',
+  );
+  private centeredTrackRef = viewChild<ElementRef<HTMLDivElement>>('centeredTrack');
+  private centeredBtns = viewChildren<ElementRef<HTMLButtonElement>>('centeredBtn');
 
   /** Index of the button currently snapped to centre */
   centeredActiveIndex = 0;
@@ -57,38 +59,56 @@ export class TopMenubar implements AfterViewInit, OnDestroy {
       label: 'Why Us',
       url: '#why-us',
       section: 'why-us',
-      command: (e) => { e.originalEvent?.preventDefault(); this.smoothScroll.scrollTo('why-us'); },
+      command: (e) => {
+        e.originalEvent?.preventDefault();
+        this.smoothScroll.scrollTo('why-us');
+      },
     },
     {
       label: 'Services',
       url: '#services',
       section: 'services',
-      command: (e) => { e.originalEvent?.preventDefault(); this.smoothScroll.scrollTo('services'); },
+      command: (e) => {
+        e.originalEvent?.preventDefault();
+        this.smoothScroll.scrollTo('services');
+      },
     },
     {
       label: 'Case Studies',
       url: '#case-studies',
       section: 'case-studies',
-      command: (e) => { e.originalEvent?.preventDefault(); this.smoothScroll.scrollTo('case-studies'); },
+      command: (e) => {
+        e.originalEvent?.preventDefault();
+        this.smoothScroll.scrollTo('case-studies');
+      },
     },
     {
       label: 'About',
       url: '#about',
       section: 'about',
-      command: (e) => { e.originalEvent?.preventDefault(); this.smoothScroll.scrollTo('about'); },
+      command: (e) => {
+        e.originalEvent?.preventDefault();
+        this.smoothScroll.scrollTo('about');
+      },
     },
     {
       label: 'Contact',
       url: '#contact',
       section: 'contact',
-      command: (e) => { e.originalEvent?.preventDefault(); this.smoothScroll.scrollTo('contact'); },
+      command: (e) => {
+        e.originalEvent?.preventDefault();
+        this.smoothScroll.scrollTo('contact');
+      },
     },
     {
       label: 'Message Us',
       url: '#contact',
       section: 'contact',
       styleClass: 'mobile-cta-item',
-      command: (e) => { e.originalEvent?.preventDefault(); this.smoothScroll.scrollTo('contact'); },
+      command: (e) => {
+        e.originalEvent?.preventDefault();
+        this.smoothScroll.scrollTo('contact');
+      },
     },
   ];
 
@@ -185,44 +205,62 @@ export class TopMenubar implements AfterViewInit, OnDestroy {
   //   dist  >  1  → far     : scale(1),    opacity 0.3, pointer-events: none
   //
   private updateCenteredCarousel(): void {
-    const trackEl   = this.centeredTrackRef()?.nativeElement;
+    const trackEl = this.centeredTrackRef()?.nativeElement;
     const container = this.centeredCarouselContainer()?.nativeElement;
-    const btnEls    = this.centeredBtns().map((r) => r.nativeElement);
+    const btnEls = this.centeredBtns().map((r) => r.nativeElement);
 
     if (!trackEl || !container || !btnEls.length) return;
 
-    // 1. Reset transform so rects are measured from the natural layout position
-    trackEl.style.transition = 'none';
-    trackEl.style.transform  = 'translateX(0)';
+    // How this works — no reset, no reflow, no jank:
+    //
+    // We never touch the transition or snap the track back to zero.
+    // Instead we work entirely in terms of a delta on top of whatever
+    // translateX the track is already at:
+    //
+    //   currentOffset  = the translateX value already applied to the track
+    //                    (parsed from the computed matrix, or 0 on first run)
+    //
+    //   At this moment the track IS at currentOffset, so getBoundingClientRect()
+    //   on the active button already reflects that translated position.
+    //
+    //   containerCentreX = fixed viewport coordinate (never changes)
+    //   activeBtnCentreX = viewport coordinate of the active button RIGHT NOW
+    //                      (i.e. already includes currentOffset)
+    //
+    //   delta  = containerCentreX − activeBtnCentreX
+    //            → how much further we still need to move
+    //
+    //   targetOffset = currentOffset + delta
+    //                = the single translateX value that perfectly centres the button
+    //
+    // Because we never set transition:none or jump to translateX(0), the browser
+    // animates smoothly from wherever the track currently sits to targetOffset.
 
-    // 2. Force a reflow so the browser applies the reset before we measure
-    //    (void read is the standard way to flush layout)
-    void trackEl.offsetWidth;
+    // 1. Read the track's current translateX from its computed matrix
+    const matrix = new DOMMatrix(getComputedStyle(trackEl).transform);
+    const currentOffset = matrix.m41; // m41 is the X translation component
 
-    // 3. Measure natural positions
+    // 2. Measure live positions (track is already at currentOffset)
     const containerRect = container.getBoundingClientRect();
-    const activeBtn     = btnEls[this.centeredActiveIndex];
+    const activeBtn = btnEls[this.centeredActiveIndex];
     const activeBtnRect = activeBtn.getBoundingClientRect();
 
-    // 4. Compute offset: how far must the track shift so the active button
-    //    centre aligns with the container centre?
     const containerCentreX = containerRect.left + containerRect.width / 2;
-    const activeBtnCentreX = activeBtnRect.left  + activeBtnRect.width  / 2;
-    const offset = containerCentreX - activeBtnCentreX;
+    const activeBtnCentreX = activeBtnRect.left + activeBtnRect.width / 2;
 
-    // 5. Re-enable transition and apply the precise offset
-    trackEl.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-    trackEl.style.transform  = `translateX(${offset}px)`;
+    // 3. Compute target — no reflow needed
+    const delta = containerCentreX - activeBtnCentreX;
+    const targetOffset = currentOffset + delta;
 
-    // 6. Apply per-button visual states
+    // 4. Apply — transition is always-on in CSS, so this animates smoothly
+    trackEl.style.transform = `translateX(${targetOffset}px)`;
+
+    // 5. Per-button visual states
     btnEls.forEach((btn, i) => {
-      const dist     = Math.abs(i - this.centeredActiveIndex);
-      const isActive = dist === 0;
-      const isFar    = dist > 1;
-
-      btn.style.opacity       = isFar ? '0.3' : '1';
-      btn.style.pointerEvents = isFar ? 'none' : 'auto';
-      btn.style.transform     = isActive ? 'scale(1.05)' : 'scale(1)';
+      const dist = Math.abs(i - this.centeredActiveIndex);
+      btn.style.opacity = dist > 1 ? '0.3' : '1';
+      btn.style.pointerEvents = dist > 1 ? 'none' : 'auto';
+      btn.style.transform = dist === 0 ? 'scale(1.05)' : 'scale(1)';
     });
   }
 
@@ -244,4 +282,3 @@ export class TopMenubar implements AfterViewInit, OnDestroy {
     return classes.join(' ').trim();
   }
 }
-
