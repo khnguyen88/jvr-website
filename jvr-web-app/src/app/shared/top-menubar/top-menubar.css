@@ -76,7 +76,10 @@
 
   /* Desktop — whole item container jumps up on hover, text shadow boldens */
   :host ::ng-deep .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content {
-    transition: transform 0.2s ease-out;
+    transition:
+      transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      background 0.25s ease,
+      color 0.25s ease;
   }
   :host ::ng-deep .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content:hover {
     transform: translateY(-3px);
@@ -98,13 +101,19 @@
     text-shadow: 0 0 0.5px currentColor;
   }
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:has(.p-menubar-item-link-active) {
-    background: var(--purple-tint) !important;
+    background: var(--purple-tint);
     border-radius: var(--radius-sm);
+    transition:
+      background 0.25s ease,
+      border-radius 0.25s ease;
   }
   /* Active nav item — based on scroll position */
   :host ::ng-deep .p-menubar-root-list > .nav-item-active > .p-menubar-item-content {
-    background: var(--purple-tint) !important;
+    background: var(--purple-tint);
     border-radius: var(--radius-sm);
+    transition:
+      background 0.25s ease,
+      border-radius 0.25s ease;
   }
   :host
     ::ng-deep
@@ -292,11 +301,13 @@
 
   /* Mobile — nav items nudge right + bold on hover, bold stays on active route */
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-content .p-menubar-item-link {
-    transition: transform 0.3s ease-in-out;
+    transition:
+      transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      color 0.25s ease;
   }
   @media (prefers-reduced-motion: no-preference) {
     :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:hover .p-menubar-item-link {
-      animation: nav-nudge-right 0.55s ease-in-out forwards;
+      animation: nav-nudge-right 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
   }
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:hover .p-menubar-item-link {
@@ -305,19 +316,28 @@
   }
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:hover {
     background: var(--bg-light);
+    transition:
+      background 0.25s ease,
+      border-radius 0.25s ease;
   }
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-link.p-menubar-item-link-active {
     color: var(--text);
     text-shadow: 0 0 0.5px currentColor;
   }
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:has(.p-menubar-item-link-active) {
-    background: var(--purple-tint) !important;
+    background: var(--purple-tint);
     border-radius: var(--radius-sm);
+    transition:
+      background 0.25s ease,
+      border-radius 0.25s ease;
   }
   /* Active nav item — based on scroll position (mobile) */
   :host ::ng-deep .p-menubar-root-list > .nav-item-active > .p-menubar-item-content {
-    background: var(--purple-tint) !important;
+    background: var(--purple-tint);
     border-radius: var(--radius-sm);
+    transition:
+      background 0.25s ease,
+      border-radius 0.25s ease;
   }
   :host
     ::ng-deep
