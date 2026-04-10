@@ -226,6 +226,11 @@
     margin-right: 0;
   }
 
+  /* Hide Message Us button on tablet view */
+  .cta-btn-wrapper {
+    display: none;
+  }
+
   /* Hamburger base — same dimensions and border as .theme-toggle */
   :host ::ng-deep .p-menubar-mobile .p-menubar-button {
     width: 44px;
@@ -481,35 +486,10 @@
   }
 }
 
-/* Mobile CTA "Get Started" styles */
-:host ::ng-deep .mobile-cta-item {
-  display: none;
-}
-
+/* Mobile CTA "Get Started" styles - hidden on tablet and smaller */
 @media (max-width: 960px) {
   :host ::ng-deep .mobile-cta-item {
-    display: block;
-  }
-
-  :host ::ng-deep .mobile-cta-item > .p-menubar-item-content {
-    background-color: var(--orange);
-    border-radius: 6px;
-    margin: 8px 12px;
-    box-shadow: 0 0 10px rgba(249, 115, 22, 0.25);
-    transition:
-      box-shadow 0.2s,
-      background-color 0.2s;
-  }
-
-  :host ::ng-deep .mobile-cta-item > .p-menubar-item-content .p-menubar-item-link {
-    color: var(--color-cta-text) !important;
-    font-weight: 600;
-    justify-content: center;
-  }
-
-  :host ::ng-deep .mobile-cta-item > .p-menubar-item-content:hover {
-    background-color: var(--orange-deep) !important;
-    box-shadow: 0 0 16px rgba(249, 115, 22, 0.35) !important;
+    display: none;
   }
 }
 
@@ -610,8 +590,8 @@
      This value must match CENTERED_BTN_W constant in top-menubar.ts.        */
   .centered-nav-btn {
     flex: 0 0 110px;                    /* = CENTERED_BTN_W in top-menubar.ts */
-    height: 44px;                       /* WCAG minimum touch target           */
-    padding: 0 8px;
+    height: 36px;                       /* Reduced from 44px for slimmer look  */
+    padding: 0 10px;
     border-radius: var(--radius-pill);
     border: 1px solid var(--border);
     background: var(--bg-light-2);
