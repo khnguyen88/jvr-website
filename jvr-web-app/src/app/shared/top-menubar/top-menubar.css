@@ -414,9 +414,12 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
-/* Theme toggle hover — explicit dark mode background for WCAG compliance */
+/* Theme toggle - same brightness as hamburger icon in dark mode */
+:host-context(body.dark-mode) .theme-toggle {
+  color: var(--text-mid);
+}
 :host-context(body.dark-mode) .theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.12); /* Sufficient contrast with icon color */
+  background: rgba(255, 255, 255, 0.12);
   border-color: var(--blue);
 }
 
