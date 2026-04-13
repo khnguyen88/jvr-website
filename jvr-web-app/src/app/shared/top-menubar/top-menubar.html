@@ -1,44 +1,56 @@
 <nav aria-label="Main navigation">
-<p-menubar [model]="items()">
-
-  <ng-template #start>
-    <a href="#hero" class="logo-link flex align-items-center gap-2 no-underline"
-       (click)="$event.preventDefault(); smoothScroll.scrollTo('hero')"
-       aria-label="JvR Enterprises — back to top">
-      <img src="logos/jvr-logo.png" alt="JvR Enterprises logo" class="logo-img" width="40" height="40" />
-      <div class="flex flex-column">
-        <span class="logo-name">JvR Enterprises</span>
-        <span class="logo-tagline">LLC</span>
-      </div>
-    </a>
-  </ng-template>
-
-  <ng-template #end>
-    <div class="menubar-end-group flex align-items-center gap-2">
-      <button
-        class="theme-toggle"
-        (click)="themeService.toggle()"
-        [attr.aria-label]="themeService.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
-        type="button"
+  <p-menubar [model]="items()">
+    <ng-template #start>
+      <a
+        href="#hero"
+        class="logo-link flex align-items-center gap-2 no-underline"
+        (click)="$event.preventDefault(); smoothScroll.scrollTo('hero')"
+        aria-label="JvR Enterprises — back to top"
       >
-        <i [class]="'pi ' + (themeService.isDark() ? 'pi-sun' : 'pi-moon')" aria-hidden="true"></i>
-      </button>
-      <div class="cta-btn-wrapper pr-3">
-        <p-button label="Message Us" (onClick)="scrollToContact()" class="btn-orange" />
+        <img
+          src="logos/jvr-logo.png"
+          alt="JvR Enterprises logo"
+          class="logo-img"
+          width="40"
+          height="40"
+        />
+        <div class="flex flex-column">
+          <span class="logo-name">JvR Enterprises</span>
+          <span class="logo-tagline">LLC</span>
+        </div>
+      </a>
+    </ng-template>
+
+    <ng-template #end>
+      <div class="menubar-end-group flex align-items-center gap-2">
+        <button
+          class="theme-toggle"
+          (click)="themeService.toggle()"
+          [attr.aria-label]="themeService.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+          type="button"
+        >
+          <i
+            [class]="'pi ' + (themeService.isDark() ? 'pi-sun' : 'pi-moon')"
+            aria-hidden="true"
+          ></i>
+        </button>
+        <div class="cta-btn-wrapper pr-3">
+          <p-button label="Message Us" (onClick)="scrollToContact()" class="btn-orange" />
+        </div>
       </div>
-    </div>
-  </ng-template>
+    </ng-template>
+  </p-menubar>
 
-</p-menubar>
-
-  <!-- Mobile Navigation Carousel (2nd row) -->
+  <!-- Mobile Navigation Bar - Tablet View - (2nd row) -->
   <div class="mobile-nav-carousel" #carouselContainer>
     <div class="carousel-track">
       @for (item of carouselItems; track item.section) {
         <button
           type="button"
           class="carousel-nav-btn"
-          [class.carousel-nav-btn-active]="item.section === scrollState.activeSection() && scrollState.activeSection() !== 'hero'"
+          [class.carousel-nav-btn-active]="
+            item.section === scrollState.activeSection() && scrollState.activeSection() !== 'hero'
+          "
           (click)="onCarouselButtonClick(item, $event)"
           [attr.data-section]="item.section"
           #carouselBtn
@@ -49,7 +61,6 @@
     </div>
   </div>
 
-
   <!-- Centered Snap Carousel — shown only on ≤560px -->
   <div class="mobile-nav-carousel-centered" #centeredCarouselContainer>
     <div class="centered-carousel-track" #centeredTrack>
@@ -57,7 +68,9 @@
         <button
           type="button"
           class="centered-nav-btn"
-          [class.centered-nav-btn-active]="item.section === scrollState.activeSection() && scrollState.activeSection() !== 'hero'"
+          [class.centered-nav-btn-active]="
+            item.section === scrollState.activeSection() && scrollState.activeSection() !== 'hero'
+          "
           (click)="onCenteredCarouselClick(item, $event)"
           [attr.data-section]="item.section"
           #centeredBtn
@@ -78,5 +91,4 @@
       }
     </div>
   </div>
-
 </nav>

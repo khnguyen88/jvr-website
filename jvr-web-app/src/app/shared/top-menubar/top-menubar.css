@@ -76,7 +76,10 @@
 
   /* Desktop — whole item container jumps up on hover, text shadow boldens */
   :host ::ng-deep .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content {
-    transition: transform 0.2s ease-out;
+    transition:
+      transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      background 0.25s ease,
+      color 0.25s ease;
   }
   :host ::ng-deep .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content:hover {
     transform: translateY(-3px);
@@ -87,19 +90,30 @@
     > .p-menubar-item
     > .p-menubar-item-content:hover
     .p-menubar-item-link {
+    color: var(--text);
     text-shadow: 0 0 0.5px currentColor;
   }
+  :host ::ng-deep .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content:hover {
+    background: var(--bg-light);
+  }
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-link.p-menubar-item-link-active {
+    color: var(--text);
     text-shadow: 0 0 0.5px currentColor;
   }
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:has(.p-menubar-item-link-active) {
-    background: var(--purple-tint) !important;
+    background: var(--purple-tint);
     border-radius: var(--radius-sm);
+    transition:
+      background 0.25s ease,
+      border-radius 0.25s ease;
   }
   /* Active nav item — based on scroll position */
   :host ::ng-deep .p-menubar-root-list > .nav-item-active > .p-menubar-item-content {
-    background: var(--purple-tint) !important;
+    background: var(--purple-tint);
     border-radius: var(--radius-sm);
+    transition:
+      background 0.25s ease,
+      border-radius 0.25s ease;
   }
   :host
     ::ng-deep
@@ -107,6 +121,7 @@
     > .nav-item-active
     > .p-menubar-item-content
     .p-menubar-item-link {
+    color: var(--text);
     text-shadow: 0 0 0.5px currentColor;
   }
 }
@@ -226,6 +241,11 @@
     margin-right: 0;
   }
 
+  /* Hide Message Us button on tablet view */
+  .cta-btn-wrapper {
+    display: none;
+  }
+
   /* Hamburger base — same dimensions and border as .theme-toggle */
   :host ::ng-deep .p-menubar-mobile .p-menubar-button {
     width: 44px;
@@ -281,27 +301,43 @@
 
   /* Mobile — nav items nudge right + bold on hover, bold stays on active route */
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-content .p-menubar-item-link {
-    transition: transform 0.3s ease-in-out;
+    transition:
+      transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      color 0.25s ease;
   }
   @media (prefers-reduced-motion: no-preference) {
     :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:hover .p-menubar-item-link {
-      animation: nav-nudge-right 0.55s ease-in-out forwards;
+      animation: nav-nudge-right 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
   }
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:hover .p-menubar-item-link {
+    color: var(--text);
     text-shadow: 0 0 0.5px currentColor;
   }
+  :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:hover {
+    background: var(--bg-light);
+    transition:
+      background 0.25s ease,
+      border-radius 0.25s ease;
+  }
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-link.p-menubar-item-link-active {
+    color: var(--text);
     text-shadow: 0 0 0.5px currentColor;
   }
   :host ::ng-deep .p-menubar-root-list .p-menubar-item-content:has(.p-menubar-item-link-active) {
-    background: var(--purple-tint) !important;
+    background: var(--purple-tint);
     border-radius: var(--radius-sm);
+    transition:
+      background 0.25s ease,
+      border-radius 0.25s ease;
   }
   /* Active nav item — based on scroll position (mobile) */
   :host ::ng-deep .p-menubar-root-list > .nav-item-active > .p-menubar-item-content {
-    background: var(--purple-tint) !important;
+    background: var(--purple-tint);
     border-radius: var(--radius-sm);
+    transition:
+      background 0.25s ease,
+      border-radius 0.25s ease;
   }
   :host
     ::ng-deep
@@ -309,6 +345,7 @@
     > .nav-item-active
     > .p-menubar-item-content
     .p-menubar-item-link {
+    color: var(--text);
     text-shadow: 0 0 0.5px currentColor;
   }
 }
@@ -321,33 +358,43 @@
 }
 
 :host-context(body.dark-mode) ::ng-deep .p-menubar-item-link {
-  color: var(--text-mid);
+  color: rgba(255, 255, 255, 0.95);
 }
 
-:host-context(body.dark-mode) ::ng-deep .p-menubar-item-content:hover,
-:host-context(body.dark-mode)
-  ::ng-deep
-  .p-menubar-item.p-menubar-item-active
-  > .p-menubar-item-content,
-:host-context(body.dark-mode)
-  ::ng-deep
-  .p-menubar-item[aria-expanded='true']
-  > .p-menubar-item-content {
-  background: rgba(255, 255, 255, 0.06) !important;
+/* Desktop hover (min-width: 961px) */
+@media (min-width: 961px) {
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+  }
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list > .p-menubar-item > .p-menubar-item-content:hover .p-menubar-item-link {
+    color: #fff !important;
+  }
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list .p-menubar-item-content:has(.p-menubar-item-link-active),
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list > .nav-item-active > .p-menubar-item-content {
+    background: rgba(147, 51, 255, 0.35) !important;
+  }
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list .p-menubar-item-content:has(.p-menubar-item-link-active) .p-menubar-item-link,
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list > .nav-item-active > .p-menubar-item-content .p-menubar-item-link {
+    color: #fff !important;
+  }
 }
 
-:host-context(body.dark-mode) ::ng-deep .p-menubar-item-content:hover .p-menubar-item-link,
-:host-context(body.dark-mode)
-  ::ng-deep
-  .p-menubar-item.p-menubar-item-active
-  > .p-menubar-item-content
-  .p-menubar-item-link,
-:host-context(body.dark-mode)
-  ::ng-deep
-  .p-menubar-item[aria-expanded='true']
-  > .p-menubar-item-content
-  .p-menubar-item-link {
-  color: var(--text) !important;
+/* Mobile/Tablet hover (≤960px) */
+@media (max-width: 960px) {
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list .p-menubar-item-content:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+  }
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list .p-menubar-item-content:hover .p-menubar-item-link {
+    color: #fff !important;
+  }
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list .p-menubar-item-content:has(.p-menubar-item-link-active),
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list > .nav-item-active > .p-menubar-item-content {
+    background: rgba(147, 51, 255, 0.35) !important;
+  }
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list .p-menubar-item-content:has(.p-menubar-item-link-active) .p-menubar-item-link,
+  :host-context(body.dark-mode) ::ng-deep .p-menubar-root-list > .nav-item-active > .p-menubar-item-content .p-menubar-item-link {
+    color: #fff !important;
+  }
 }
 
 /* Prevent p-focus (set by PrimeNG JS on mouse hover) from keeping hover styles after cursor leaves.
@@ -367,9 +414,12 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
-/* Theme toggle hover — explicit dark mode background for WCAG compliance */
+/* Theme toggle - same brightness as hamburger icon in dark mode */
+:host-context(body.dark-mode) .theme-toggle {
+  color: var(--text-mid);
+}
 :host-context(body.dark-mode) .theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.12); /* Sufficient contrast with icon color */
+  background: rgba(255, 255, 255, 0.12);
   border-color: var(--blue);
 }
 
@@ -418,30 +468,36 @@
 
   .carousel-track {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 12px;
     min-width: max-content;
     /* Center buttons within the carousel track */
     justify-content: center;
   }
 
   .carousel-nav-btn {
-    flex-shrink: 0;
-    padding: 6px 14px;
-    font-size: 14px;
+    flex: 0 0 110px;
+    height: 36px;
+    padding: 0 10px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    background: var(--bg-light-2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
     font-weight: 500;
     color: var(--text-mid);
-    background: var(--bg-light-2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-pill);
-    cursor: pointer;
     white-space: nowrap;
     transition:
-      background 0.18s,
-      border-color 0.18s,
-      color 0.18s,
-      transform 0.25s ease-out;
-    min-height: 44px; /* WCAG touch target */
-    font-family: 'DM Sans', sans-serif;
+      background     0.25s ease,
+      border-color   0.25s ease,
+      color          0.25s ease,
+      transform      0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    user-select: none;
   }
 
   .carousel-nav-btn:hover {
@@ -451,65 +507,29 @@
     text-shadow: 0 0 0.5px currentColor;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .carousel-nav-btn:hover {
-      animation: cta-scale 0.25s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    }
-    .carousel-nav-btn:active {
-      animation: cta-press 0.18s ease-out forwards;
-    }
+  .carousel-nav-btn:focus-visible {
+    outline: 3px solid var(--orange);
+    outline-offset: 3px;
   }
 
   .carousel-nav-btn-active {
-    background: var(--purple-tint);
-    border-color: rgba(147, 51, 255, 0.3);
-    color: var(--purple-dark);
+    background: var(--purple-tint) !important;
+    border-color: rgba(147, 51, 255, 0.3) !important;
+    color: var(--purple-dark) !important;
     font-weight: 600;
     text-shadow: 0 0 0.5px currentColor;
   }
 
   .carousel-nav-btn-active:hover {
-    background: var(--purple-tint);
-    border-color: var(--purple);
-    color: var(--purple);
-    text-shadow: 0 0 0.5px currentColor;
-  }
-
-  .carousel-nav-btn:focus-visible {
-    outline: 3px solid var(--orange);
-    outline-offset: 3px;
+    border-color: var(--purple) !important;
+    color: var(--purple) !important;
   }
 }
 
-/* Mobile CTA "Get Started" styles */
-:host ::ng-deep .mobile-cta-item {
-  display: none;
-}
-
+/* Mobile CTA "Get Started" styles - hidden on tablet and smaller */
 @media (max-width: 960px) {
   :host ::ng-deep .mobile-cta-item {
-    display: block;
-  }
-
-  :host ::ng-deep .mobile-cta-item > .p-menubar-item-content {
-    background-color: var(--orange);
-    border-radius: 6px;
-    margin: 8px 12px;
-    box-shadow: 0 0 10px rgba(249, 115, 22, 0.25);
-    transition:
-      box-shadow 0.2s,
-      background-color 0.2s;
-  }
-
-  :host ::ng-deep .mobile-cta-item > .p-menubar-item-content .p-menubar-item-link {
-    color: var(--color-cta-text) !important;
-    font-weight: 600;
-    justify-content: center;
-  }
-
-  :host ::ng-deep .mobile-cta-item > .p-menubar-item-content:hover {
-    background-color: var(--orange-deep) !important;
-    box-shadow: 0 0 16px rgba(249, 115, 22, 0.35) !important;
+    display: none;
   }
 }
 
@@ -526,21 +546,20 @@
 }
 
 :host-context(body.dark-mode) .carousel-nav-btn:hover {
-  background: rgba(255, 255, 255, 0.32);
-  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.55);
   color: #fff;
 }
 
 :host-context(body.dark-mode) .carousel-nav-btn-active {
-  background: rgba(29, 111, 232, 0.42);
-  border-color: rgba(29, 111, 232, 0.75);
-  color: #fff;
+  background: rgba(147, 51, 255, 0.35) !important;
+  border-color: rgba(147, 51, 255, 0.75) !important;
+  color: #fff !important;
 }
 
 :host-context(body.dark-mode) .carousel-nav-btn-active:hover {
-  background: rgba(147, 51, 255, 0.78);
-  border-color: rgba(147, 51, 255, 1);
-  color: #fff;
+  background: rgba(147, 51, 255, 0.55) !important;
+  border-color: rgba(147, 51, 255, 1) !important;
 }
 
 /* Dark mode Mobile CTA */
@@ -572,7 +591,7 @@
 }
 
 /* ── ≤ 560px: swap carousels ─────────────────────────────────────────────── */
-@media (max-width: 560px) {
+@media (max-width: 600px) {
 
   /* Hide the existing horizontal-scroll pill carousel */
   .mobile-nav-carousel {
@@ -610,8 +629,8 @@
      This value must match CENTERED_BTN_W constant in top-menubar.ts.        */
   .centered-nav-btn {
     flex: 0 0 110px;                    /* = CENTERED_BTN_W in top-menubar.ts */
-    height: 44px;                       /* WCAG minimum touch target           */
-    padding: 0 8px;
+    height: 36px;                       /* Reduced from 44px for slimmer look  */
+    padding: 0 10px;
     border-radius: var(--radius-pill);
     border: 1px solid var(--border);
     background: var(--bg-light-2);
@@ -692,7 +711,7 @@
 }
 
 /* ── Dark mode — centered carousel ──────────────────────────────────────── */
-@media (max-width: 560px) {
+@media (max-width: 600px) {
   :host-context(body.dark-mode) .mobile-nav-carousel-centered {
     background: var(--bg-white);
     border-color: var(--border);
