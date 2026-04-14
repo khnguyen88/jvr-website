@@ -1,6 +1,13 @@
+# Node modules
+node_modules/
+
+# Environment folders and files
+environment/
+.env
+.env.*
+
 # Sensitive / private — never commit these
 /private/
-/environment/
 .accessibility-audit/
 /docs/
 
