@@ -4,12 +4,11 @@ const express = require("express");
 const app = express();
 const { Resend } = require("resend");
 const cors = require("cors");
-const { JSDOM } = require("jsdom");
-const createDOMPurify = require("dompurify");
-const { window } = new JSDOM("");
-const DOMPurify = createDOMPurify(window);
 const rateLimit = require("express-rate-limit");
 const validator = require("validator");
+const { buildHtmlMessage } = require("./middleware/html-message-builder");
+const { santizeForm } = require("./middleware/sanitize-form");
+const { validateContactForm } = require("./middleware/validate-form");
 
 const port = process.env.PORT || 3000;
 
@@ -58,48 +57,18 @@ app.post(
 
 		const { contactForm } = req.body;
 
-		if (
-			!contactForm ||
-			!contactForm.name ||
-			!contactForm.email ||
-			!contactForm.subject ||
-			!contactForm.message
-		) {
-			return res
-				.status(400)
-				.send("Missing required fields: name, email, subject, message");
-		}
+		validateContactForm(req, res, () => {});
 
-		if (!validator.isEmail(contactForm.email)) {
-			return res.status(400).send("Invalid email address");
-		}
-
-		if (
-			contactForm.name.length > MAX_LENGTHS.name ||
-			contactForm.subject.length > MAX_LENGTHS.subject ||
-			contactForm.message.length > MAX_LENGTHS.message
-		) {
-			return res
-				.status(400)
-				.send("One or more fields exceed maximum length");
-		}
-
-		const safeName = contactForm.name.replace(/[\r\n]/g, "");
-		const safeEmail = contactForm.email.replace(/[\r\n]/g, "");
-		const safeSubject = contactForm.subject.replace(/[\r\n]/g, "");
-		const safeMessage = contactForm.message.replace(/\r/g, "");
-
-		const cleanHTML = DOMPurify.sanitize(
-			`<strong>${safeName} <${safeEmail}></strong><br><br><p>${safeMessage}</p>`,
-		);
+		const safeContactForm = santizeForm(contactForm);
+		const cleanHTML = buildHtmlMessage(safeContactForm);
 
 		try {
 			const { data, error } = await resend.emails.send({
-				from: `${process.env.RESEND_NAME} <${process.env.RESEND_EMAIL}>`,
-				replyTo: `${safeName} <${safeEmail}>`,
+				from: `${process.env.RESEND_NAME} <${process.env.RESEND_EMAIL}>`, //TODO: Add private domain support later and use JVR domain for this email
+				replyTo: `${safeContactForm.firstName} ${safeContactForm.lastName} <${safeContactForm.email}>`,
 				to: [forwardingEmail],
-				subject: safeSubject,
-				text: `You have received a new message from ${safeName} (${safeEmail}):\n\n${safeMessage}`,
+				subject: safeContactForm.subject,
+				text: `You have received a new message from ${safeContactForm.firstName} ${safeContactForm.lastName} (${safeContactForm.email}):\n\n${safeContactForm.message}`,
 				html: cleanHTML,
 			});
 
