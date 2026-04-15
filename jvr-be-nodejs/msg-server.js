@@ -1,15 +1,28 @@
 require("dotenv").config();
 
 const express = require("express");
+const app = express();
 const { Resend } = require("resend");
 const cors = require("cors");
-const { DOMpurify } = require("dompurify");
-const app = express();
+const { JSDOM } = require("jsdom");
+const createDOMPurify = require("dompurify");
+const { window } = new JSDOM("");
+const DOMPurify = createDOMPurify(window);
+const rateLimit = require("express-rate-limit");
+const validator = require("validator");
+
 const port = process.env.PORT || 3000;
 const forwardingEmail = process.env.FORWARDING_EMAIL || "";
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY) || null;
 
-app.use(cors());
+app.use(
+	cors({
+		origin: process.env.JVR_DOMAIN_ADDRESS || "*",
+	}),
+);
+
+app.use(express.json());
+
 app.get("/", (req, res) => {
 	res.send("Hello World!");
 });
@@ -22,7 +35,7 @@ app.options("/message", (req, res) => {
 	res.sendStatus(204);
 });
 
-app.post("/message", (req, res) => {
+app.post("/message", rateLimit({ windowMs: 60_000, max: 3 }), (req, res) => {
 	let cleanHTML;
 	console.log("Received message:", req.body);
 	const { contactForm } = req.body;
@@ -35,8 +48,6 @@ app.post("/message", (req, res) => {
 		return res.status(400).send("Expected application/json");
 	}
 
-	app.use(express.json());
-
 	if (
 		!contactForm ||
 		!contactForm.name ||
@@ -44,13 +55,18 @@ app.post("/message", (req, res) => {
 		!contactForm.subject ||
 		!contactForm.message
 	) {
-		cleanHTML = DOMPurify.sanitize(
-			`<strong>${contactForm.name} <${contactForm.email}></strong><br><br><p>${contactForm.message}</p>`,
-		);
 		return res
 			.status(400)
 			.send("Missing required fields: name, email, subject, message");
 	}
+
+	if (!validator.isEmail(contactForm.email)) {
+		return res.status(400).send("Invalid email address");
+	}
+
+	cleanHTML = DOMPurify.sanitize(
+		`<strong>${contactForm.name} <${contactForm.email}></strong><br><br><p>${contactForm.message}</p>`,
+	);
 
 	(async () => {
 		const { data, error } = await resend.emails.send({
