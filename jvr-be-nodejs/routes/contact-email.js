@@ -53,13 +53,13 @@ router.post(
 
 			if (error) {
 				console.error("Resend API error:", error);
-				return res.status(500).send("Failed to send email");
+				return res.status(500).json({ error: "Failed to send email" });
 			} else {
-				res.status(200).send("Email sent successfully");
+				res.status(200).json({ message: "Email sent successfully" });
 			}
 		} catch (err) {
 			console.error("Unexpected error:", err);
-			res.status(500).send("An unexpected error occurred");
+			res.status(500).json({ error: "An unexpected error occurred" });
 		}
 	},
 );
