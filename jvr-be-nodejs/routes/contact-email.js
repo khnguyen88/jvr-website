@@ -26,7 +26,7 @@ const forwardingEmail = process.env.FORWARDING_EMAIL;
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 router.post(
-	"/message",
+	"/resend/email",
 	rateLimit({
 		windowMs: 60_000,
 		max: 3,
