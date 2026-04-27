@@ -18,10 +18,10 @@
                 ], 400);
             }
 
-            $emailto = 'creativekhiem@gmail.com';
-            $toname = 'CreativeKhiem';
-            $emailfrom = 'jcvonrosen@jvrenterprises.com';
-            $fromname = 'John von Rosen';
+            $emailto = 'contact@jvrenterprises.com';
+            $toname = 'JvR Enterprises';
+            $emailfrom = 'contact@jvrenterprises.com';
+            $fromname = 'JvR Enterprises';
             $subject = $data['subject'];
             $messagebody = $data['message'];
             
