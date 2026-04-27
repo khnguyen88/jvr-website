@@ -1,7 +1,9 @@
 <?php 
+    cors();
+
     echo '<h1>Hi from jvr email server</h1>';
 
-    if (isset($_POST)) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         previewHeaders();
         previewData();
@@ -9,15 +11,15 @@
         $data = getRequestBodyData();
 
         try{ 
-            if (isFormComplete($data)) {
+            if (!isFormComplete($data)) {
                 send_response([
                     'status' => 'failed',
                     'message' => 'A complete form must be submitted!',
                 ], 400);
             }
 
-            $emailto = 'jcvonrosen@jvrenterprises.com';
-            $toname = 'Jay von Rosen';
+            $emailto = 'creativekhiem@gmail.com';
+            $toname = 'CreativeKhiem';
             $emailfrom = $data['email'];
             $fromname = getUserFullName($data);
             $subject = $data['subject'];
@@ -44,7 +46,7 @@
         catch(Exception $e){
             send_response([
                 'status' => 'server-error',
-                'message' => 'There has bee an internal server error, please try and submit the form, again. The error: ' + $e,
+                'message' => 'There has bee an internal server error, please try and submit the form, again. The error: ' .$e->getMessage(),
             ], 500);
         }
     }
@@ -59,19 +61,19 @@
     }
 
     function isFormNameComplete($data){
-        return empty($data['firstName']) && empty($data['lastName']);
+        return !empty($data['firstName']) && !empty($data['lastName']);
     }
 
     function isFormContactInfoComplete($data){
-        return empty($data['email']) && empty($data['phone']);
+        return !empty($data['email']);
     }
 
     function isFormMessageComplete($data){
-        return empty($data['subject']) && empty($data['message']);
+        return !empty($data['subject']) && !empty($data['message']);
     }
 
     function getUserFullName($data){
-        return $data['firstName'] + " " + empty($data['lastName']);
+        return $data['firstName'] . " " . $data['lastName'];
     }
 
     function getRequestBodyData(){
@@ -96,6 +98,19 @@
             foreach ($data as $name => $value) {
                 echo "$name: $value\n";
             }
+        }
+    }
+
+
+    function cors() {
+        header("Access-Control-Allow-Origin: *");
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+        header('Access-Control-Allow-Headers: Content-Type, Authorization');
+        header('Access-Control-Max-Age: 86400');
+
+        if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+            http_response_code(204);
+            exit(0);
         }
     }
 ?>
