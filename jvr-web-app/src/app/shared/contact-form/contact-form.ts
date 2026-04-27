@@ -179,11 +179,9 @@ export class ContactForm implements OnInit {
       const result = await firstValueFrom(this.emailProvider.sendEmail(this.contactFormModel()));
       console.log('Email send result:', result.status, result);
       if (result.status === 200 || result.ok) {
-        console.log('Contact form submitted:', this.contactFormModel());
         this.submitSuccess.set(true);
       }
     } catch (err: unknown) {
-      console.log(err);
       const msg = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
       this.submitError.set(msg);
     } finally {
